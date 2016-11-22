@@ -1,62 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Web App Final</title>
-    <title>Contact Us</title>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="javascript/contact.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWRawQzZpMr7n6JpcdGZ8LbT0kEcyzvO4&callback=initMap"></script>
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/contact.css" />
-    <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="header">
-        <img id="banner" src="images/top-banner.png" alt="banner">
-      </div>
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Web App Final</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Link 1</a></li>
-              <li><a href="#">Link 2</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Link 1</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Link 2</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Link 3</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Link 2</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><button type="button" class="btn btn-danger" id="login">Login</button></li>
-            </ul>
-          </div>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web App Final</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="javascript/contact.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWRawQzZpMr7n6JpcdGZ8LbT0kEcyzvO4&callback=initMap"></script>
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <img id="banner" src="images/top-banner.png" alt="banner">
+    </div>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">UOIT eSports Planner</a>
         </div>
-      </nav>
-      <table>
-        <tr>
-          <td><div id="map"/><td>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#">About Us</a></li>
+            <li><a href="/contactPage">Contact Us</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Link 1</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Link 2</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Link 3</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Link 2</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><button type="button" class="btn btn-danger" id="login">Login</button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <table>
+      <tr>
+        <td><div id="map"/><td>
+          <td><p>Being associated with the UOIT eSports Planner, we are run and 
+            operated by the UOIT eSports Club. We are located at the northern campus in 
+            Oshawa. Come over and join us for a fun and competitive environment.</p>
+            <p>Stay up to date on all our activites on our social media pages!</p>
+            <ul>
+              <li><a href="https://twitter.com/udesports"><img src="images/Twitter-Logo.png" alt="UOIT eSports Twitter"></a></li>
+              <li><a href="https://www.facebook.com/groups/ud.esports/"><img src="images/Facebook-Logo.png" alt="UOIT eSports Facebook"></a></li>
+              <li><a href="http://steamcommunity.com/groups/UD-eSports"><img src="images/Steam-Logo.jpg" alt="UOIT eSports Steam Group"></a></li>
+            </ul>
+          </td>
         </tr>
       </table>
       <div id="blank"/>
