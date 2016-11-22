@@ -16,6 +16,40 @@
         <div class="header">
             <img id="banner" src="images/top-banner.png" alt="banner">
         </div>
+        <div id="modal" class="modal">
+  
+            <form class="modal-content animate">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('modal').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img src="images/login_avatar.jpg" alt="Avatar" class="avatar">
+                </div>
+
+                <div class="container">
+                    <label><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+        
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('modal').style.display='none'" class="btn btn-danger">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                </div>
+            </form>
+        </div>
+        <div id="copyright" class="modal">
+            <div class="modal-content animate">
+
+                <div class="container" id="copyright-text">
+                    <p>All copyrights belong to their respective owners.</p>
+                    <p>Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.</p>
+                    <p>These images and text are used here only for the education of UOIT students, and are not intended to generate income.</p>
+                </div>
+            </div>
+        </div>        
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -25,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Web App Final</a>
+                    <a class="navbar-brand" href="index.html">Web App Final</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -44,7 +78,7 @@
                         <li><a href="#">Link 2</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><button type="button" class="btn btn-danger" id="login">Login</button></li>
+                        <li><button type="button" class="btn btn-danger" id="login" onclick="document.getElementById('modal').style.display='block'">Login</button></li>
                     </ul>
                 </div>
             </div>
@@ -92,14 +126,14 @@
         <div id="footer">
             <div class="wrapper">
                 <div>
-                    Text and things go in here
-                    <button type="button" class="btn btn-info">Could Add Buttons</button>
-                    <a href="#">Or maybe a link</a>                    
+                    <a href="#" class="button btn-primary" id="copy-right" onclick="document.getElementById('copyright').style.display='block'">Copyright Information</a>
+                    <a href="contact.html" class="button btn-primary">Contact Us</a>                    
                 </div>
             </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
