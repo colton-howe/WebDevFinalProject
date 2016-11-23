@@ -3,24 +3,43 @@ var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+//Set up body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+//Set up view folder
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 
-var usernames = ['admin','bsmith','rfortier'];
+//Set up database
+mongoose.connect('localhost:27017/university');
 
-function userExists(toFind) {
-  for (var i = 0; i < usernames.length; i++) {
-    if (usernames[i] === toFind) {
-      return true;
-    }
-  }
-  return false;
-}
+var Schema = mongoose.Schema;
 
+var userSchema = new Schema({
+	id: {type: String, 
+         validate: [/([0-9]+)/, 'Any number of digits'],
+         unique: true,
+         index: true},
+	username: String,
+	hasedPassword: {type: String,
+              index: true},
+  firstName: String,
+  lastName: String,
+}, {collection: 'users'});
+var User = mongoose.model('student', studentSchema);
+
+var userSchema = new Schema({
+	username: {type: String, 
+              unique: true,
+              index: true},
+	email: String,
+	hashedPassword: String
+}, {collection: 'users'});
+var User = mongoose.model('user', userSchema);
+
+//Gets for loading pages
 app.get('/', function(request, response) {
   response.render('mainPage');
 });
