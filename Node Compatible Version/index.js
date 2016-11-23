@@ -36,5 +36,5 @@ app.get('/aboutPage', function(request, response) {
 app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), function () {
-  console.log('Listening on port ' + app.get('port'));
+  console.log('Setup Complete. Connect via http://127.0.0.1:' + app.get('port') + '/');
 });
