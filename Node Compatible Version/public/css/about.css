@@ -1,0 +1,18 @@
+#content {
+  color: white;
+  margin: 25px auto;
+}
+
+#content .ui-accordion-header {
+  color: #969696;
+  bottom: 0;
+  border-top: 1px solid #262626;
+  background: #262626;
+  background: -moz-linear-gradient(top, #262626 0%, #363636 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#262626), color-stop(100%,#363636));
+  background: -webkit-linear-gradient(top, #262626 0%,#363636 100%);
+  background: -o-linear-gradient(top, #262626 0%,#363636 100%);
+  background: -ms-linear-gradient(top, #262626 0%,#363636 100%);
+  background: linear-gradient(to bottom, #262626 0%,#363636 100%);
+}
+

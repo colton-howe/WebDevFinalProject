@@ -29,6 +29,10 @@ app.get('/contactPage', function(request, response) {
   response.render('contactPage');
 });
 
+app.get('/aboutPage', function(request, response) {
+  response.render('aboutPage');
+});
+
 app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), function () {
