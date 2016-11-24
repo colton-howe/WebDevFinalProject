@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
@@ -19,23 +20,15 @@ var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
 	id: {type: String, 
-         validate: [/([0-9]+)/, 'Any number of digits'],
-         unique: true,
-         index: true},
-	username: String,
-	hasedPassword: {type: String,
-              index: true},
+       validate: [/([0-9]+)/, 'Any number of digits'],
+       unique: true,
+       index: true},
+	username: {type: String.
+            unique: true},
+	password: {type: String,
+             index: true},
   firstName: String,
   lastName: String,
-}, {collection: 'users'});
-var User = mongoose.model('student', studentSchema);
-
-var userSchema = new Schema({
-	username: {type: String, 
-              unique: true,
-              index: true},
-	email: String,
-	hashedPassword: String
 }, {collection: 'users'});
 var User = mongoose.model('user', userSchema);
 
