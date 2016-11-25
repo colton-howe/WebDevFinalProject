@@ -9,3 +9,9 @@ window.onclick = function(event) {
         copyright.style.display = "none";
     }
 }
+
+$('#form').submit(function(e) {
+  var $this = $(this);
+  $.post($this.attr("action"), $this.serialize(), function(data) {
+  })
+});

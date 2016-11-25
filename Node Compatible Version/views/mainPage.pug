@@ -13,17 +13,17 @@ html(lang='en')
 			.header
 				img#banner(src='images/top-banner.png', alt='banner')
 			#modal.modal
-				form.modal-content.animate
+				form#form.modal-content.animate(action='/processLogin' method='post')
 					.imgcontainer
 						span.close(onclick="document.getElementById('modal').style.display='none'", title='Close Modal') ×
 						img.avatar(src='images/login_avatar.jpg', alt='Avatar')
 					.container
 						label
 							b Username
-						input(type='text', placeholder='Enter Username', name='uname', required='')
+						input(type='text', placeholder='Enter Username', name='uname', id='uname', required='')
 						label
 							b Password
-						input(type='password', placeholder='Enter Password', name='psw', required='')
+						input(type='password', placeholder='Enter Password', name='psw', id='psw', required='')
 						button.btn.btn-success(type='submit') Login
 					.container(style='background-color:#f1f1f1')
 						button.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='none'") Cancel
@@ -70,7 +70,7 @@ html(lang='en')
 								a(href='#') Link 2
 						ul.nav.navbar-nav.navbar-right
 							li
-								button#login.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='block'") Login
+								button#login.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='block'", disabled='!{disabled}') !{message}
 			.carousel-container
 				#myCarousel.carousel.slide(data-ride='carousel')
 					// Indicators

@@ -23,7 +23,7 @@ var userSchema = new Schema({
        validate: [/([0-9]+)/, 'Any number of digits'],
        unique: true,
        index: true},
-	username: {type: String.
+	username: {type: String,
             unique: true},
 	password: {type: String,
              index: true},
@@ -38,6 +38,7 @@ app.get('/', function(request, response) {
     console.log(results.length > 0)
     if (results.length > 0) {
         console.log(results[0].username);
+				console.log(results[0].password);
     } else {
         console.log("Error. Did not find match.");
     }
