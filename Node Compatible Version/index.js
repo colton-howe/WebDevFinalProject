@@ -35,12 +35,16 @@ var userSchema = new Schema({
 var User = mongoose.model('user', userSchema);
 
 //Utility functions
-function checkLoggedIn(request, response, pageToLoad) {
-	if(request.session.username) {
-		var msg = 'Welcome, ' + request.session.username;
-		response.render(pageToLoad, {disabled: 'true', message: msg});
+function checkLoggedIn(request, response, pageToLoad) {	
+	if(request.session != undefined) {
+		if(request.session.username){
+			var msg = 'Welcome, ' + request.session.username;
+			response.render(pageToLoad, {action: '/processLogout', message: 'Logout', username: msg});
+		} else {
+			response.render(pageToLoad, {action: '/processLogin', message: 'Login', username: ''});
+		}
 	} else {
-		response.render(pageToLoad, {disabled: 'false', message: 'Login'});
+		response.render(pageToLoad, {action: '/processLogin', message: 'Login', username: ''});
 	}
 }
 
@@ -54,7 +58,15 @@ app.get('/contactPage', function(request, response) {
 });
 
 app.get('/aboutPage', function(request, response) {
-	checkLoggedIn(request, reponse, 'contactPage');	
+	checkLoggedIn(request, response, 'aboutPage');	
+});
+
+app.get('/registrationPage', function(request, response) {
+	response.render('registrationPage');
+});
+
+app.get('/eventsPage', function(request, response) {
+	checkLoggedIn(request, response, 'eventsPage');	
 });
 
 //Posts to handle buttons and form submission
@@ -68,6 +80,11 @@ app.post('/processLogin', function(request, response){
       console.log("Incorrect username & password combination.");
     }
   });
+});
+
+app.post('/processLogout', function(request, response) {
+	request.session.destroy();
+	checkLoggedIn(request, response, 'mainPage');
 });
 
 app.set('port', process.env.PORT || 3000);

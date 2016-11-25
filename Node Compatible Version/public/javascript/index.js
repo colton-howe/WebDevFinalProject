@@ -8,6 +8,9 @@ window.onclick = function(event) {
     if(event.target == copyright) {
         copyright.style.display = "none";
     }
+    if(event.target == logout) {
+        logout.style.display = "none";
+    }
 }
 
 $('#form').submit(function(e) {
@@ -15,3 +18,11 @@ $('#form').submit(function(e) {
   $.post($this.attr("action"), $this.serialize(), function(data) {
   })
 });
+
+function handleLogin(){
+  if($('#accountMessage').text() == ''){
+    document.getElementById('modal').style.display='block'
+  } else {
+    document.getElementById('logout').style.display='block'
+  }
+}

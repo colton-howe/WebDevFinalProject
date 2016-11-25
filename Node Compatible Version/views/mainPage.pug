@@ -11,9 +11,9 @@ html(lang='en')
 	body
 		.wrapper
 			.header
-				img#banner(src='images/top-banner.png', alt='banner')
+				img#banner(src='images/top-banner.png', alt='banner'	)
 			#modal.modal
-				form#form.modal-content.animate(action='/processLogin' method='post')
+				form#form.modal-content.animate(action='/processLogin', method='post')
 					.imgcontainer
 						span.close(onclick="document.getElementById('modal').style.display='none'", title='Close Modal') ×
 						img.avatar(src='images/login_avatar.jpg', alt='Avatar')
@@ -38,6 +38,12 @@ html(lang='en')
 							| Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.
 						p
 							| These images and text are used here only for the education of UOIT students, and are not intended to generate income.
+			#logout.modal
+				form#form.modal-content.animate(action='/processLogout', method='post')
+					#logout-text.container
+						p Are you sure you want to logout?
+						button.btn.btn-success(type='submit') Confirm
+						button.btn.btn-danger(type='button', onclick="document.getElementById('logout').style.display='none'") Cancel
 			nav.navbar.navbar-inverse
 				.container-fluid
 					.navbar-header
@@ -52,7 +58,7 @@ html(lang='en')
 							li
 								a(href='/aboutPage') About Us
 							li
-								a(href='#') Link 2
+								a(href='/eventsPage') Events
 							li.dropdown
 								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
 									| Dropdown
@@ -67,10 +73,13 @@ html(lang='en')
 									li
 										a(href='#') Link 3
 							li
-								a(href='#') Link 2
+								a(href='#') Link 2		
 						ul.nav.navbar-nav.navbar-right
 							li
-								button#login.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='block'", disabled='!{disabled}') !{message}
+								button#login.btn.btn-danger(type='button', onclick='handleLogin()') !{message}
+						ul.nav.navbar-nav.navbar-right
+							li
+								a#accountMessage(href='#') !{username}
 			.carousel-container
 				#myCarousel.carousel.slide(data-ride='carousel')
 					// Indicators
@@ -98,7 +107,7 @@ html(lang='en')
 						span.sr-only Next
 			#footer
 				.wrapper
-					div(id='footer')
+					#footer
 						a#copy-right.button.btn-primary(href='#', onclick="document.getElementById('copyright').style.display='block'") Copyright Information
 						a.button.btn-primary(href='/contactPage') Contact Us
 		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')

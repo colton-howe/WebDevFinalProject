@@ -33,7 +33,6 @@ var userSchema = new Schema({
 var User = mongoose.model('user', userSchema);
 
 app.get('/', function(request, response) {
-  console.log("Test Access");
   User.find({id: 1}).then(function(results) {
     console.log(results.length > 0)
     if (results.length > 0) {

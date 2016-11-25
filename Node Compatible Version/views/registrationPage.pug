@@ -1,0 +1,39 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		title Web App Final
+		// Bootstrap
+		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+		link(type='text/css', rel='stylesheet', href='css/register.css')
+	body
+		.wrapper
+			.header
+				img#banner(src='images/top-banner.png', alt='banner')
+		.container
+			form#newuser(onsubmit='return formCheck(this)')
+				#user.form-group
+					label
+						b Username
+					input.form-control(type='text', placeholder='Enter Username', name='uname', required='')
+					label Must be minimum 6 characters long.
+				br
+				#pass-check
+					#psw.form-group
+						label
+							b Password
+						input.form-control(type='password', placeholder='Enter Password', name='psw', required='')
+						label Must be minimum 6 characters long.
+					br
+					#confirm-psw.form-group
+						label
+							b Confirm Password
+						input.form-control(type='password', placeholder='Enter Password', name='conf-psw', required='')
+					.button-box
+						button#register.btn.btn-success(type='submit', onclick='return formCheck();') Register
+						button#cancel.btn.btn-danger(onclick="location.href = 'index.html';") Cancel
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+		script(src='javascript/register.js')

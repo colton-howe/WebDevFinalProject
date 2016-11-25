@@ -1,0 +1,93 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		title Web App Final
+		// Bootstrap
+		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+		link(type='text/css', rel='stylesheet', href='css/index.css')
+		link(type='text/css', rel='stylesheet', href='css/events.css')
+	body
+		.wrapper
+			.header
+				img#banner(src='images/top-banner.png', alt='banner')
+			#modal.modal
+				form#form.modal-content.animate(action='/processLogin', method='post')
+					.imgcontainer
+						span.close(onclick="document.getElementById('modal').style.display='none'", title='Close Modal') ×
+						img.avatar(src='images/login_avatar.jpg', alt='Avatar')
+					.container
+						label
+							b Username
+						input#uname(type='text', placeholder='Enter Username', name='uname', required='')
+						label
+							b Password
+						input#psw(type='password', placeholder='Enter Password', name='psw', required='')
+						button.btn.btn-success(type='submit') Login
+					.container(style='background-color:#f1f1f1')
+						button.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='none'") Cancel
+						span.psw
+							| Forgot 
+							a(href='#') password?
+			#copyright.modal
+				.modal-content.animate
+					#copyright-text.container
+						p All copyrights belong to their respective owners.
+						p
+							| Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.
+						p
+							| These images and text are used here only for the education of UOIT students, and are not intended to generate income.
+			#logout.modal
+				form#form.modal-content.animate(action='/processLogout', method='post')
+					#logout-text.container
+						p Are you sure you want to logout?
+						button.btn.btn-success(type='submit') Confirm
+						button.btn.btn-danger(type='button', onclick="document.getElementById('logout').style.display='none'") Cancel
+			nav.navbar.navbar-inverse
+				.container-fluid
+					.navbar-header
+						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand(href='/') UOIT eSports
+					#navbar.navbar-collapse.collapse
+						ul.nav.navbar-nav
+							li
+								a(href='/aboutPage') About Us
+							li
+								a(href='/eventsPage') Events
+							li.dropdown
+								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+									| Dropdown
+									span.caret
+								ul.dropdown-menu
+									li
+										a(href='#') Link 1
+									li.divider(role='separator')
+									li
+										a(href='#') Link 2
+									li.divider(role='separator')
+									li
+										a(href='#') Link 3
+							li
+								a(href='#') Link 2		
+						ul.nav.navbar-nav.navbar-right
+							li
+								button#login.btn.btn-danger(type='button', onclick='handleLogin()') !{message}
+						ul.nav.navbar-nav.navbar-right
+							li
+								a#accountMessage(href='#') !{username}
+			#content
+			#footer
+				.wrapper
+					#footer
+						a#copy-right.button.btn-primary(href='#', onclick="document.getElementById('copyright').style.display='block'") Copyright Information
+						a.button.btn-primary(href='/contactPage') Contact Us
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+		script(src='javascript/index.js')
+		script(src='javascript/events.js')
