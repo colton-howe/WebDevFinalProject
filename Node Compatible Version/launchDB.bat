@@ -1,1 +1,1 @@
-"C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe" --dbpath "C:\Users\100520095\Desktop\WebDevFinalProject\Node Compatible Version\public\database"
+"C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe" --dbpath "C:\Users\100523510\Documents\GitHub\WebDevFinalProject\Node Compatible Version\public\database"
