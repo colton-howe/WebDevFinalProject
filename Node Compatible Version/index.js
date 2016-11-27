@@ -29,8 +29,6 @@ var userSchema = new Schema({
             unique: true},
 	password: {type: String,
              index: true},
-  firstName: String,
-  lastName: String,
 }, {collection: 'users'});
 var User = mongoose.model('user', userSchema);
 
@@ -76,8 +74,7 @@ app.post('/processLogin', function(request, response){
 			request.session.username = request.body.uname;
 			checkLoggedIn(request, response, 'mainPage');	
     } else {
-			//TODO: Find some way to display to screen.
-      console.log("Incorrect username & password combination.");
+				response.render('mainPage', {action: '/processLogin', message: 'Login', username: '', error: 'Invalid Login Credentials'});
     }
   });
 });
@@ -85,6 +82,18 @@ app.post('/processLogin', function(request, response){
 app.post('/processLogout', function(request, response) {
 	request.session.destroy();
 	checkLoggedIn(request, response, 'mainPage');
+});
+
+app.post('/makeAccount', function(request, response){
+	var userCount = User.collection.count();
+	var newUser = new User({id: userCount+1, username: request.body.uname, password: request.body.psw});
+	newUser.save(function(error) {
+	    if (error) {
+				response.render('registrationPage', {error: "Username already exists in system. Please pick a different username."});
+	    } else {
+				response.render('registrationPage', {error: "Account created! Click cancel to go back to the main page and login."});
+	    }
+	});
 });
 
 app.set('port', process.env.PORT || 3000);

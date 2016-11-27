@@ -9,6 +9,10 @@ html(lang='en')
 		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
 		link(type='text/css', rel='stylesheet', href='css/index.css')
 		link(type='text/css', rel='stylesheet', href='css/events.css')
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+		script(src='javascript/index.js')
+		script(src='javascript/events.js')
 	body
 		.wrapper
 			.header
@@ -21,16 +25,15 @@ html(lang='en')
 					.container
 						label
 							b Username
-						input#uname(type='text', placeholder='Enter Username', name='uname', required='')
+						input(type='text', placeholder='Enter Username', name='uname', required='')
 						label
 							b Password
-						input#psw(type='password', placeholder='Enter Password', name='psw', required='')
+						input(type='password', placeholder='Enter Password', name='psw', required='')
 						button.btn.btn-success(type='submit') Login
 					.container(style='background-color:#f1f1f1')
 						button.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='none'") Cancel
 						span.psw
-							| Forgot 
-							a(href='#') password?
+							a(href='/registrationPage') New User?
 			#copyright.modal
 				.modal-content.animate
 					#copyright-text.container
@@ -45,7 +48,7 @@ html(lang='en')
 						p Are you sure you want to logout?
 						button.btn.btn-success(type='submit') Confirm
 						button.btn.btn-danger(type='button', onclick="document.getElementById('logout').style.display='none'") Cancel
-			nav.navbar.navbar-inverse
+			nav.navbar.navbar-custom
 				.container-fluid
 					.navbar-header
 						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
@@ -62,33 +65,31 @@ html(lang='en')
 								a(href='/eventsPage') Events
 							li.dropdown
 								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-									| Dropdown
+									| Games
 									span.caret
 								ul.dropdown-menu
 									li
-										a(href='#') Link 1
+										a(href='#') League of Legends
 									li.divider(role='separator')
 									li
-										a(href='#') Link 2
+										a(href='#') Dota 2
 									li.divider(role='separator')
 									li
-										a(href='#') Link 3
-							li
-								a(href='#') Link 2		
+										a(href='#') Overwatch
+									li.divider(role='separator')
+									li
+										a(href='#') Starcraft 2
 						ul.nav.navbar-nav.navbar-right
 							li
 								button#login.btn.btn-danger(type='button', onclick='handleLogin()') !{message}
 						ul.nav.navbar-nav.navbar-right
 							li
-								a#accountMessage(href='#') !{username}					
+								a#accountMessage(href='#') !{username}				
 			#contentNavigation
 			#content
 			#footer
 				.wrapper
 					#footer
 						a#copy-right.button.btn-primary(href='#', onclick="document.getElementById('copyright').style.display='block'") Copyright Information
+						a
 						a.button.btn-primary(href='/contactPage') Contact Us
-		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
-		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
-		script(src='javascript/index.js')
-		script(src='javascript/events.js')

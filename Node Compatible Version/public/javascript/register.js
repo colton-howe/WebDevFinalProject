@@ -44,7 +44,13 @@ function formCheck() {
     if(psw.hasClass("has-success") && confirmpsw.hasClass("has-success") && user.hasClass("has-success")) {
         return true;
     } else {
-        alert("Please double check your submitted info.");
+        $('#error-msg').html("Please double check your submitted info.");
         return false;
     } 
 }
+
+$('#newuser').submit(function(e) {
+  var $this = $(this);
+  $.post($this.attr("action"), $this.serialize(), function(data) {
+  })
+});

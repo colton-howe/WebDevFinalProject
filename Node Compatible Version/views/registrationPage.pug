@@ -13,7 +13,8 @@ html(lang='en')
 			.header
 				img#banner(src='images/top-banner.png', alt='banner')
 		.container
-			form#newuser(onsubmit='return formCheck(this)')
+			form#newuser(onsubmit='return formCheck(this)' action='/makeAccount', method='post')
+				p#error-msg !{error}
 				#user.form-group
 					label
 						b Username

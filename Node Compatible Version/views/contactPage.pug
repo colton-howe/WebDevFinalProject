@@ -15,7 +15,7 @@ html(lang='en')
 			.header
 				img#banner(src='images/top-banner.png', alt='banner')
 			#modal.modal
-				form.modal-content.animate
+				form#form.modal-content.animate(action='/processLogin', method='post')
 					.imgcontainer
 						span.close(onclick="document.getElementById('modal').style.display='none'", title='Close Modal') ×
 						img.avatar(src='images/login_avatar.jpg', alt='Avatar')
@@ -30,8 +30,7 @@ html(lang='en')
 					.container(style='background-color:#f1f1f1')
 						button.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='none'") Cancel
 						span.psw
-							| Forgot 
-							a(href='#') password?
+							a(href='/registrationPage') New User?
 			#copyright.modal
 				.modal-content.animate
 					#copyright-text.container
@@ -40,7 +39,13 @@ html(lang='en')
 							| Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.
 						p
 							| These images and text are used here only for the education of UOIT students, and are not intended to generate income.
-			nav.navbar.navbar-inverse
+			#logout.modal
+				form#form.modal-content.animate(action='/processLogout', method='post')
+					#logout-text.container
+						p Are you sure you want to logout?
+						button.btn.btn-success(type='submit') Confirm
+						button.btn.btn-danger(type='button', onclick="document.getElementById('logout').style.display='none'") Cancel
+			nav.navbar.navbar-custom
 				.container-fluid
 					.navbar-header
 						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
@@ -54,25 +59,29 @@ html(lang='en')
 							li
 								a(href='/aboutPage') About Us
 							li
-								a(href='#') Link 2
+								a(href='/eventsPage') Events
 							li.dropdown
 								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-									| Dropdown
+									| Games
 									span.caret
 								ul.dropdown-menu
 									li
-										a(href='#') Link 1
+										a(href='#') League of Legends
 									li.divider(role='separator')
 									li
-										a(href='#') Link 2
+										a(href='#') Dota 2
 									li.divider(role='separator')
 									li
-										a(href='#') Link 3
-							li
-								a(href='#') Link 2
+										a(href='#') Overwatch
+									li.divider(role='separator')
+									li
+										a(href='#') Starcraft 2
 						ul.nav.navbar-nav.navbar-right
 							li
-								button#login.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='block'") Login
+								button#login.btn.btn-danger(type='button', onclick='handleLogin()') !{message}
+						ul.nav.navbar-nav.navbar-right
+							li
+								a#accountMessage(href='#') !{username}
 			table
 				tr
 					td
@@ -86,17 +95,18 @@ html(lang='en')
 							#social-media
 								li
 									a(href='https://twitter.com/udesports')
-									img(src='images/Twitter-Logo.png', alt='UOIT eSports Twitter')
+										img(src='images/Twitter-Logo.png', alt='UOIT eSports Twitter')
 								li
 									a(href='https://www.facebook.com/groups/ud.esports/')
-									img(src='images/Facebook-Logo.png', alt='UOIT eSports Facebook')
+										img(src='images/Facebook-Logo.png', alt='UOIT eSports Facebook')
 								li
 									a(href='http://steamcommunity.com/groups/UD-eSports')
-									img(src='images/Steam-Logo.jpg', alt='UOIT eSports Steam Group')
+										img(src='images/Steam-Logo.jpg', alt='UOIT eSports Steam Group')
 			#footer
 				.wrapper
 					div
 						a#copy-right.button.btn-primary(href='#', onclick="document.getElementById('copyright').style.display='block'") Copyright Information
+						a
 						a.button.btn-primary(href='/contactPage') Contact Us
 		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
 		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
