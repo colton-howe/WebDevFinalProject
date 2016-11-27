@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var content;
-  if($('#accountMessage').text() == ''){
+  if($('#accountMessage').text() == '				'){
     content = "<table>"
     content += "<tr>";
     content += "<td><img src='images/pylon.png' alt='PYLONS!'></td>";

@@ -20,7 +20,7 @@ $('#form').submit(function(e) {
 });
 
 function handleLogin(){
-  if($('#accountMessage').text() == ''){
+  if($('#accountMessage').text() == '' || $('#accountMessage').text() == '				'){
     document.getElementById('modal').style.display='block'
   } else {
     document.getElementById('logout').style.display='block'
