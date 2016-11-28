@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web App Final</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="css/index.css" />
+    <link type="text/css" rel="stylesheet" href="css/games.css" />
+    
+  </head>
+  <body>
+    <div class="wrapper">
+        <div class="header">
+            <img id="banner" src="images/top-banner.png" alt="banner">
+        </div>
+        <div id="modal" class="modal">
+  
+            <form class="modal-content animate">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('modal').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img src="images/login_avatar.jpg" alt="Avatar" class="avatar">
+                </div>
+
+                <div class="container">
+                    <label><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+        
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('modal').style.display='none'" class="btn btn-danger">Cancel</button>
+                    <span class ="psw"><a href="register.html">New User?</a></span>
+                </div>
+            </form>
+        </div>
+        <div id="copyright" class="modal">
+            <div class="modal-content animate">
+
+                <div class="container" id="copyright-text">
+                    <p>All copyrights belong to their respective owners.</p>
+                    <p>Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.</p>
+                    <p>These images and text are used here only for the education of UOIT students, and are not intended to generate income.</p>
+                </div>
+            </div>
+        </div>        
+        <nav class="navbar navbar-custom">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Web App Final</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Link 1</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Link 2</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><button type="button" class="btn btn-danger" id="login" onclick="document.getElementById('modal').style.display='block'">Login</button></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="game-banner">
+                <img src="images/game-banner/OW.png">
+            </div>
+            <button class="accordion">Overwatch General Info.</button>
+            <div id="summary" class="panel">
+                <p>
+                    In a time of global crisis, an international task force of heroes banded together to restore peace to a war-torn world. This organization, known as Overwatch, ended the crisis and helped maintain peace for a generation, inspiring an era of exploration, innovation, and discovery. After many years, Overwatch's influence waned and it was eventually disbanded. Now in the wake of its dismantling, conflict is rising once again. Overwatch may be gone... but the world still needs heroes.
+                </p>
+                <p>
+                    <b>Choose A Hero:</b> Overwatch features a wide array of unique Heroes, ranging from a time-jumping adventurer, to an armored, rocket-hammer-wielding warrior, to a transcendent robot monk. Every hero plays differently, and mastering their Abilities is the key to unlocking their potential. No two heroes are the same.
+                </p>
+                <p>
+                    <b>Play Your Role:</b> Whether you're engaging in combat on the front line, providing defensive cover with your energy shield, or supporting your allies by amplifying their damage, every hero's abilities are designed to be effective as part of a team. Learning to utilize your Abilities in concert with your teammates' is the key to victory.
+                </p>
+                <p>
+                    <b>Team Based Objectives:</b> Teams of heroes do battle across the planet. From protecting the secrets of the mysterious Temple of Anubis, to safely escorting an EMP device through King's Row, the world is your battlefield
+                </p> 
+            </div>
+            <button class="accordion">Overwatch Maps and Game Modes</button>
+            <div id="maps" class="panel">
+                <p>In Overwatch there are 5 different types of maps. The map types are Assault, Escort, Hybrid, Control, and Arena.</p>
+                <!-- Assault -->
+                <p><b>Assault:</b> Assault, sometimes referred to as Two Point Capture, is a Game Mode in which the attacking and defending teams must attempt to take or defend capture points across the map. Defenders always have the same spawnpoint, whether defending the first or second point, while the attacker's spawn changes depending on the point they are attempting to capture. It should be noted that every Assault map has an almost-immediate choke point, and that the defenders' spawn is just behind the second point, making the second push just as difficult as breaking the choke.</p>
+                <p>The following maps are the available Assault maps: </p>
+                <ul>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Hanamura"><img src="images/games/OW/Maps/hanamura.png">Hanamura</a>
+                    </li>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Temple_of_Anubis"><img src="images/games/OW/Maps/TempleofAnubis.png">Temple of Anubis</a>
+                    </li>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Volskaya_Industries"><img src="images/games/OW/Maps/VolskayaIndustries.png">Volskaya Industries</a>
+                    </li>
+                </ul>
+                <!-- Escort -->
+                <p><b>Escort:</b> In Escort, there is an attacking and a defending team. Teams' roles are determined randomly when the map is         chosen, and once the match is complete, roles are swapped.
+
+                    The attacking team aims to escort a payload across the map to the objective, while the defending team aims to stop them.
+
+                    At the start of each round, the defending team is allocated some time to set up defenses before the attacking team is allowed out of their spawn area. When the set up timer runs out, attackers may leave their spawn area and another timer begins counting down. Each checkpoint reached adds extra time to the timer.
+
+                    If an attacker is within range of the payload when the timer expires, or shortly beforehand, Overtime will be activated. If the attacking team manages to get to an intermediate checkpoint during Overtime, the extra time is added and Overtime ends, with the game proceeding as normal.</p>
+                <p>The following maps are the available Escort maps: </p>
+                <ul>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Dorado"><img src="images/games/OW/Maps/Dorado.png">Dorado</a>
+                    </li>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Watchpoint:_Gibraltar"><img src="images/games/OW/Maps/WatchpointGibraltar.png">Watchpoint: Gibraltar</a>
+                    </li>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Route_66"><img src="images/games/OW/Maps/Route66.png">Route 66</a>
+                    </li>
+                </ul>
+                <!-- Hybrid -->
+                <p><b>Hybird:</b> All currently available Hybrid maps start with Assault and result in a Escort situation, should the attacking team manage to take the point.</p>
+                <p>The following maps are the available Hybrid maps: </p>
+                <ul>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/King%27s_Row"><img src="images/games/OW/Maps/King'sRow.png">Kings Row</a>
+                    </li>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Numbani"><img src="images/games/OW/Maps/Numbani.png">Numbani</a>
+                    </li>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Hollywood"><img src="images/games/OW/Maps/Hollywood.png">Hollywood</a>
+                    </li>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Eichenwalde"><img src="images/games/OW/Maps/Eichenwalde.png">Eichenwalde</a>
+                    </li>
+                </ul>
+                <!-- Control -->
+                <p><b>Control:</b> On Control, two teams fight over a series of objective areas in a best-of-three format. This means that there is no distinction to attacking or defending teams like in other game modes.[1]
+
+                    Once the match has started and both teams have left the spawn, the control point takes 30 seconds to unlock. Once it unlocks, the objective area can be captured by either team. To capture the checkpoint, members of only one team must stand on the point for a given time, speed increasing with the number of teammates present. Once captured, the team must defend the point, while the other must gain control of the area by driving the enemies out and capturing it themselves. The objective score will slowly progress in favor of the team controlling point. The round is won once one team reaches 100%. The first team to win two rounds wins the match.
+
+                    Each of the Control maps has three objective areas, randomly chosen for every round.
+
+                    In Competitive Play, the match is played in a format of best of five rather than best of three. The map sectors are randomized for the first three rounds and are then reshuffled if the match reaches further. That means that in any competitive Control match, each map section is guaranteed to be played on at least once.</p>
+                <p>The following maps are the available Control maps: </p>
+                <ul>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Nepal"><img src="images/games/OW/Maps/Nepal.png">Nepal</a>
+                    </li>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Lijiang_Tower"><img src="images/games/OW/Maps/LijiangTower.png">Lijiang Tower</a>
+                    </li>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Ilios"><img src="images/games/OW/Maps/Ilios.png">Illios</a>
+                    </li>
+                </ul>
+                <!-- Arena -->
+                <p><b>Arena:</b> Arena game modes have a few options. The options are 1v1 Mystery Duel, where you and a single opponent are randomed the same hero for each round in a best-of-nine battle; 3v3 Elimination, where you play with two other team-mates, any single-hero-limit team composition, but locked in for the rest of the round in a best-of-five – each round is no respawn</p>
+                <p>The following map is the only currently available Arena map: </p>
+                <ul>
+                    <li>
+                        <a href="http://overwatch.gamepedia.com/Ecopoint:_Antarctica"><img src="images/games/OW/Maps/EcopointAntarctica.png">Ecopoint: Antarctica</a>
+                    </li>
+                </ul>
+                
+            </div>
+            <button id="chars" class="accordion">Overwatch Heroes</button>
+            <div id="heroes" class="panel">
+                <table class="characters">
+                    <tr>
+                        <th>Offense</th>
+                        <td><a href="http://overwatch.gamepedia.com/Genji"><img src="images/games/OW/Heroes/genji.png"><p>Genji</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/McCree"><img src="images/games/OW/Heroes/mccree.png"><p>McCree</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Pharah"><img src="images/games/OW/Heroes/pharah.png"><p>Pharah</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Reaper"><img src="images/games/OW/Heroes/reaper.png"><p>Reaper</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Soldier:_76"><img src="images/games/OW/Heroes/soldier76.png"><p>Soldier: 76</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Sombra"><img src="images/games/OW/Heroes/sombra.png"><p>Sombra</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Tracer"><img src="images/games/OW/Heroes/tracer.png"><p>Tracer</p></a></td>
+                    </tr>
+                    <tr>
+                        <th>Defense</th>
+                        <td><a href="http://overwatch.gamepedia.com/Bastion"><img src="images/games/OW/Heroes/bastion.png"><p>Bastion</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Hanzo"><img src="images/games/OW/Heroes/hanzo.png"><p>Hanzo</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Junkrat"><img src="images/games/OW/Heroes/junkrat.png"><p>Junkrat</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Mei"><img src="images/games/OW/Heroes/mei.png"><p>Mei</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Torbj%C3%B6rn"><img src="images/games/OW/Heroes/torbjorn.png"><p>Torbjörn</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Widowmaker"><img src="images/games/OW/Heroes/widowmaker.png"><p>Widowmaker</p></a></td>
+                    </tr>
+                    <tr>
+                        <th>Tanks</th>
+                        <td><a href="http://overwatch.gamepedia.com/D.Va"><img src="images/games/OW/Heroes/dva.png"><p>D.Va</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Reinhardt"><img src="images/games/OW/Heroes/reinhardt.png"><p>Reinhardt</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Roadhog"><img src="images/games/OW/Heroes/roadhog.png"><p>Roadhog</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Winston"><img src="images/games/OW/Heroes/winston.png"><p>Winston</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Zarya"><img src="images/games/OW/Heroes/zarya.png"><p>Zarya</p></a></td>
+                    </tr>
+                    <tr>
+                        <th>Support</th>
+                        <td><a href="http://overwatch.gamepedia.com/Ana"><img src="images/games/OW/Heroes/ana.png"><p>Ana</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/L%C3%BAcio"><img src="images/games/OW/Heroes/lucio.png"><p>Lúcio</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Mercy/"><img src="images/games/OW/Heroes/mercy.png"><p>Mercy</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Symmetra"><img src="images/games/OW/Heroes/symmetra.png"><p>Symmetra</p></a></td>
+                        <td><a href="http://overwatch.gamepedia.com/Zenyatta"><img src="images/games/OW/Heroes/zenyatta.png"><p>Zenyatta</p></a></td>
+                    </tr>
+                </table>
+            </div>
+            <button id="twitch-btn" class="accordion">Recommended Twitch Streamer</button>
+            <div id="twitch" class="panel OW">
+            </div>
+        </div>
+        <div id="footer">
+            <div class="wrapper">
+                <div>
+                    <a href="#" class="button btn-primary" id="copy-right" onclick="document.getElementById('copyright').style.display='block'">Copyright Information</a>
+                    <a href="contact.html" class="button btn-primary">Contact Us</a>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src= "http://player.twitch.tv/js/embed/v1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+    <script src="js/games.js"></script>
+  </body>
+</html>

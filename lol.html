@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web App Final</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="css/index.css" />
+    <link type="text/css" rel="stylesheet" href="css/games.css" />
+    
+  </head>
+  <body>
+    <div class="wrapper">
+        <div class="header">
+            <img id="banner" src="images/top-banner.png" alt="banner">
+        </div>
+        <div id="modal" class="modal">
+  
+            <form class="modal-content animate">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('modal').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img src="images/login_avatar.jpg" alt="Avatar" class="avatar">
+                </div>
+
+                <div class="container">
+                    <label><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+        
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('modal').style.display='none'" class="btn btn-danger">Cancel</button>
+                    <span class ="psw"><a href="register.html">New User?</a></span>
+                </div>
+            </form>
+        </div>
+        <div id="copyright" class="modal">
+            <div class="modal-content animate">
+
+                <div class="container" id="copyright-text">
+                    <p>All copyrights belong to their respective owners.</p>
+                    <p>Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.</p>
+                    <p>These images and text are used here only for the education of UOIT students, and are not intended to generate income.</p>
+                </div>
+            </div>
+        </div>        
+        <nav class="navbar navbar-custom">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Web App Final</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Link 1</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Link 2</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><button type="button" class="btn btn-danger" id="login" onclick="document.getElementById('modal').style.display='block'">Login</button></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="game-banner">
+                <img src="images/game-banner/LoL.jpg">
+            </div>
+            <button class="accordion">League of Legends General Info.</button>
+            <div id="summary" class="panel">
+                <p>As the League of Legends was established to prevent further Rune Wars on Valoran, the neutral aligned summoners called forth exceptional individuals, referred to as 'champions', to battle on the Fields of Justice in order to settle disputes. These champions have joined the League for various reasons. Some are soldiers who have pledged their allegiance to a particular nation and fight in their nation's interests. Some are renowned warriors who seek to prove themselves against Valoran's most powerful beings. Some are prisoners of the League, forced to do the League's bidding as punishment. Some may even be strange creatures from other worlds, hoping to bring stability or further discord to Runeterra. For whatever the champion's reason, they have gained the interest of the League of Legends.
+                </p>
+                <p>
+                In order to join the League, a potential champion, who has proven to possess extraordinary qualities, must travel to the Institute of War to undergo a Judgement. There, a designated summoner will probe their mind in order to determine the individual's motives. In truth, the intentions of the potential champion has little bearing on whether they are accepted into the League or not. The primary purpose of the Judgement is to determine whether the individual is capable of exposing their mind to the summoner, which would allow the two to share their mental thoughts and act as one. Should the potential champion pass their Judgement, as well as agreeing to the call of the summon, they will have become an official League champion. 
+                </p>
+            </div>
+            <button class="accordion">League of Legends Maps and Game Modes</button>
+            <div id="maps" class="panel">
+                <p>League of Legends consists of three main maps. There are also two main game modes.</p>
+                <p><b>ARAM:</b> ARAM, the acronym for All Random All Mid, is a supported PvP game mode in League of Legends. It was released on 06-29-2012. Upon entering champion selection, ten summoners, five on each team, randomly summon a champion from their available pool of champions (owned and free play). They are allowed to "reroll" their champion, based upon reroll points (a maximum of 2 rerolls can be saved up at once), which are gained by both playing ARAM games and having a diverse champion pool. Players may also try to trade with teammates if both players have both champions available to them, whether through purchase or the current weekly champion rotation.
+                </p>
+                <p>Out of the three maps is used for ARAM: </p>
+                <ul id="LoLimg">
+                    <li>
+                        <a href="http://leagueoflegends.wikia.com/wiki/Murder_Bridge/Howling_Abyss"><img src="images/games/LoL/Maps/Howling_Abyss.jpg"><br>Howling Abyss</a>
+                    </li>
+                </ul>
+                <p><b>Classic:</b> Players are formed into two even teams primarily comprised of three or five members. Each team starts at opposing sides of a map, near what is called a "Nexus." To win a match, a team must destroy the opposing team's Nexus. To do so, each team must work through a series of towers called 'turrets' that are placed along three paths to each base (commonly referred to as 'lanes') Along the way, each player gains power by completing game objectives, earning them experience points and gold that are used to increase the player's level and to purchase powerful items, potentially giving players an advantage over their opponents. Examples of these objectives include killing the opposing team's turrets, players, and 'minions' (small NPCs that constantly spawn and attack the other team).
+                </p>
+                <p>Two of the three maps are used for Classic: </p>
+                <ul id="LoLimg">
+                    <li>
+                        <a href="http://leagueoflegends.wikia.com/wiki/Summoner%27s_Rift"><img src="images/games/LoL/Maps/Summoners_Rift.jpg"><br>Summoner's Rift (5v5 - Three lanes)</a>
+                    </li>
+                    <li>
+                        <a href="http://leagueoflegends.wikia.com/wiki/Twisted_Treeline"><img src="images/games/LoL/Maps/Twisted_Treeline.png"><br>Twisted Treeline (3v3 - Two Lanes)</a>
+                    </li>
+                </ul>
+            </div>
+            <button id="chars" class="accordion">League of Legends Champions</button>
+            <div id="heroes" class="panel">
+                <table class="characters">
+                    <tr>
+                        <th>Fighter</th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Aatrox"><img src="images/games/LoL/Champions/Fighter/AatroxSquare.png.webp"><p>Aatrox</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Darius"><img src="images/games/LoL/Champions/Fighter/DariusSquare.png.webp"><p>Darius</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Diana"><img src="images/games/LoL/Champions/Fighter/DianaSquare.png.webp"><p>Diana</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Dr._Mundo"><img src="images/games/LoL/Champions/Fighter/Dr._MundoSquare.png.webp"><p>Dr. Mundo</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Fiora"><img src="images/games/LoL/Champions/Fighter/FioraSquare.png.webp"><p>Fiora</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Gangplank"><img src="images/games/LoL/Champions/Fighter/GangplankSquare.png.webp"><p>Gangplank</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Garen"><img src="images/games/LoL/Champions/Fighter/GarenSquare.png.webp"><p>Garen</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Gnar"><img src="images/games/LoL/Champions/Fighter/GnarSquare.png.webp"><p>Gnar</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Gragas"><img src="images/games/LoL/Champions/Fighter/GragasSquare.png.webp"><p>Gragas</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Hecarim"><img src="images/games/LoL/Champions/Fighter/HecarimSquare.png.webp"><p>Hecarim</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Illaoi"><img src="images/games/LoL/Champions/Fighter/IllaoiSquare.png.webp"><p>Illaoi</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Irelia"><img src="images/games/LoL/Champions/Fighter/IreliaSquare.png.webp"><p>Irelia</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Jax"><img src="images/games/LoL/Champions/Fighter/JaxSquare.png.webp"><p>Jax</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Jayce"><img src="images/games/LoL/Champions/Fighter/JayceSquare.png.webp"><p>Jayce</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Kayle"><img src="images/games/LoL/Champions/Fighter/KayleSquare.png.webp"><p>Kayle</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Kled"><img src="images/games/LoL/Champions/Fighter/KledSquare.png.webp"><p>Kled</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Lee_Sin"><img src="images/games/LoL/Champions/Fighter/LeeSinSquare.png.webp"><p>Lee Sin</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Mordekaisert"><img src="images/games/LoL/Champions/Fighter/MordekaiserSquare.png.webp"><p>Mordekaiser</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Nasus"><img src="images/games/LoL/Champions/Fighter/NasusSquare.png.webp"><p>Nasus</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Olaf"><img src="images/games/LoL/Champions/Fighter/OlafSquare.png.webp"><p>Olaf</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Pantheon"><img src="images/games/LoL/Champions/Fighter/PantheonSquare.png.webp"><p>Pantheon</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Rek%27Sai"><img src="images/games/LoL/Champions/Fighter/Rek'SaiSquare.png.webp"><p>Rek'Sai</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Renekton"><img src="images/games/LoL/Champions/Fighter/RenektonSquare.png.webp"><p>Renekton</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Riven"><img src="images/games/LoL/Champions/Fighter/RivenSquare.png.webp"><p>Riven</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Rumble"><img src="images/games/LoL/Champions/Fighter/RumbleSquare.png.webp"><p>Rumble</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Shyvana"><img src="images/games/LoL/Champions/Fighter/ShyvanaSquare.png.webp"><p>Shyvana</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Skarner"><img src="images/games/LoL/Champions/Fighter/SkarnerSquare.png.webp"><p>Skarner</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Trundle"><img src="images/games/LoL/Champions/Fighter/TrundleSquare.png.webp"><p>Trundle</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Udyr"><img src="images/games/LoL/Champions/Fighter/UdyrSquare.png.webp"><p>Udyr</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Vi"><img src="images/games/LoL/Champions/Fighter/ViSquare.png.webp"><p>Vi</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Volibear"><img src="images/games/LoL/Champions/Fighter/VolibearSquare.png.webp"><p>Volibear</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Warwick"><img src="images/games/LoL/Champions/Fighter/WarwickSquare.png.webp"><p>Warwick</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Wukong"><img src="images/games/LoL/Champions/Fighter/WukongSquare.png.webp"><p>Wukong</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Xin_Zhao"><img src="images/games/LoL/Champions/Fighter/Xin_ZhaoSquare.png.webp"><p>Xin Zhao</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Yasuo"><img src="images/games/LoL/Champions/Fighter/YasuoSquare.png.webp"><p>Yasuo</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Yorick"><img src="images/games/LoL/Champions/Fighter/YorickSquare.png.webp"><p>Yorick</p></a></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <th>Mage</th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Ahri"><img src="images/games/LoL/Champions/Mage/AhriSquare.png.webp"><p>Ahri</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Anivia"><img src="images/games/LoL/Champions/Mage/AniviaSquare.png.webp"><p>Anivia</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Annie"><img src="images/games/LoL/Champions/Mage/AnnieSquare.png.webp"><p>Annie</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Aurelion_Sol"><img src="images/games/LoL/Champions/Mage/Aurelion_SolSquare.png.webp"><p>Aurelion Sol</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Azir"><img src="images/games/LoL/Champions/Mage/AzirSquare.png.webp"><p>Azir</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Brand"><img src="images/games/LoL/Champions/Mage/BrandSquare.png.webp"><p>Brand</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Cassiopeia"><img src="images/games/LoL/Champions/Mage/CassiopeiaSquare.png.webp"><p>Cassiopeia</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Elise"><img src="images/games/LoL/Champions/Mage/EliseSquare.png.webp"><p>Elise</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Fiddlesticks"><img src="images/games/LoL/Champions/Mage/FiddlesticksSquare.png.webp"><p>Fiddlesticks</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Heimerdinger"><img src="images/games/LoL/Champions/Mage/HeimerdingerSquare.png.webp"><p>Heimerdinger</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Karma"><img src="images/games/LoL/Champions/Mage/KarmaSquare.png.webp"><p>Karma</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Karthus"><img src="images/games/LoL/Champions/Mage/KarthusSquare.png.webp"><p>Karthus</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Kennen"><img src="images/games/LoL/Champions/Mage/KennenSquare.png.webp"><p>Kennen</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Lissandra"><img src="images/games/LoL/Champions/Mage/LissandraSquare.png.webp"><p>Lissandra</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Lux"><img src="images/games/LoL/Champions/Mage/LuxSquare.png.webp"><p>Lux</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Malzahar"><img src="images/games/LoL/Champions/Mage/MalzaharSquare.png.webp"><p>Malzahar</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Morgana"><img src="images/games/LoL/Champions/Mage/MorganaSquare.png.webp"><p>Morgana</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Orianna"><img src="images/games/LoL/Champions/Mage/OriannaSquare.png.webp"><p>Orianna</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Ryze"><img src="images/games/LoL/Champions/Mage/RyzeSquare.png.webp"><p>Ryze</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Swain"><img src="images/games/LoL/Champions/Mage/SwainSquare.png.webp"><p>Swain</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Syndra"><img src="images/games/LoL/Champions/Mage/SyndraSquare.png.webp"><p>Syndra</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Taliyah"><img src="images/games/LoL/Champions/Mage/TaliyahSquare.png.webp"><p>Taliyah</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Twisted_Fate"><img src="images/games/LoL/Champions/Mage/Twisted_FateSquare.png.webp"><p>Twisted Fate</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Veigar"><img src="images/games/LoL/Champions/Mage/VeigarSquare.png.webp"><p>Veigar</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Vel%27koz"><img src="images/games/LoL/Champions/Mage/Vel'KozSquare.png.webp"><p>Vel'Koz</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Viktor"><img src="images/games/LoL/Champions/Mage/ViktorSquare.png.webp"><p>Viktor</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Vladimir"><img src="images/games/LoL/Champions/Mage/VladimirSquare.png.webp"><p>Vladimir</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Xerath"><img src="images/games/LoL/Champions/Mage/XerathSquare.png.webp"><p>Xerath</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Ziggs"><img src="images/games/LoL/Champions/Mage/ZiggsSquare.png.webp"><p>Ziggs</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Zyra"><img src="images/games/LoL/Champions/Mage/ZyraSquare.png.webp"><p>Zyra</p></a></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <th>Controller</th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Bard"><img src="images/games/LoL/Champions/Controller/BardSquare.png.webp"><p>Bard</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Braum"><img src="images/games/LoL/Champions/Controller/BraumSquare.png.webp"><p>Braum</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Ivern"><img src="images/games/LoL/Champions/Controller/IvernSquare.png.webp"><p>Ivern</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Janna"><img src="images/games/LoL/Champions/Controller/JannaSquare.png.webp"><p>Janna</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Lulu"><img src="images/games/LoL/Champions/Controller/LuluSquare.png.webp"><p>Lulu</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Nami"><img src="images/games/LoL/Champions/Controller/NamiSquare.png.webp"><p>Nami</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Nunu"><img src="images/games/LoL/Champions/Controller/NunuSquare.png.webp"><p>Nunu</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Sona"><img src="images/games/LoL/Champions/Controller/SonaSquare.png.webp"><p>Sona</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Soraka"><img src="images/games/LoL/Champions/Controller/SorakaSquare.png.webp"><p>Soraka</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Tahm_Kench"><img src="images/games/LoL/Champions/Controller/Tahm_KenchSquare.png.webp"><p>Tahm Kench</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Taric"><img src="images/games/LoL/Champions/Controller/TaricSquare.png.webp"><p>Taric</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Thresh"><img src="images/games/LoL/Champions/Controller/ThreshSquare.png.webp"><p>Thresh</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Zilean"><img src="images/games/LoL/Champions/Controller/ZileanSquare.png.webp"><p>Zilean</p></a></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <th>Tanks</th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Alistar"><img src="images/games/LoL/Champions/Tank/AlistarSquare.png.webp"><p>Alistar</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Amumu"><img src="images/games/LoL/Champions/Tank/AmumuSquare.png.webp"><p>Amumu</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Blitzcrank"><img src="images/games/LoL/Champions/Tank/BlitzcrankSquare.png.webp"><p>Blitzcrank</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Cho%27Gath"><img src="images/games/LoL/Champions/Tank/Cho'GathSquare.png.webp"><p>Cho'Gath</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Galio"><img src="images/games/LoL/Champions/Tank/GalioSquare.png.webp"><p>Galio</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Jarvan_IV"><img src="images/games/LoL/Champions/Tank/Jarvan_IVSquare.png.webp"><p>Jarvan IV</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Leona"><img src="images/games/LoL/Champions/Tank/LeonaSquare.png.webp"><p>Leona</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Malphite"><img src="images/games/LoL/Champions/Tank/MalphiteSquare.png.webp"><p>Malphite</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Maokai"><img src="images/games/LoL/Champions/Tank/MaokaiSquare.png.webp"><p>Maokai</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Nautilus"><img src="images/games/LoL/Champions/Tank/NautilusSquare.png.webp"><p>Nautilus</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Poppy"><img src="images/games/LoL/Champions/Tank/PoppySquare.png.webp"><p>Poppy</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Rammus"><img src="images/games/LoL/Champions/Tank/RammusSquare.png.webp"><p>Rammus</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Sejuani"><img src="images/games/LoL/Champions/Tank/SejuaniSquare.png.webp"><p>Sejuani</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Shen"><img src="images/games/LoL/Champions/Tank/ShenSquare.png.webp"><p>Shen</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Singed"><img src="images/games/LoL/Champions/Tank/SingedSquare.png.webp"><p>Singed</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Sion"><img src="images/games/LoL/Champions/Tank/SionSquare.png.webp"><p>Sion</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Zac"><img src="images/games/LoL/Champions/Tank/ZacSquare.png.webp"><p>Zac</p></a></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <th>Slayer</th></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Akali"><img src="images/games/LoL/Champions/Slayer/AkaliSquare.png.webp"><p>Akali</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Ekko"><img src="images/games/LoL/Champions/Slayer/EkkoSquare.png.webp"><p>Ekko</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Evelynn"><img src="images/games/LoL/Champions/Slayer/EvelynnSquare.png.webp"><p>Evelynn</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Fizz"><img src="images/games/LoL/Champions/Slayer/FizzSquare.png.webp"><p>Fizz</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Kassadin"><img src="images/games/LoL/Champions/Slayer/KassadinSquare.png.webp"><p>Kassadin</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Katarina"><img src="images/games/LoL/Champions/Slayer/KatarinaSquare.png.webp"><p>Katarina</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Kha%27Zix"><img src="images/games/LoL/Champions/Slayer/Kha'ZixSquare.png.webp"><p>Kha'Zix</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/LeBlanc"><img src="images/games/LoL/Champions/Slayer/LeBlancSquare.png.webp"><p>LeBlanc</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Master_Yi"><img src="images/games/LoL/Champions/Slayer/MasterYiSquare.png.webp"><p>Master Yi</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Nidalee"><img src="images/games/LoL/Champions/Slayer/NidaleeSquare.png.webp"><p>Nidalee</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Nocturne"><img src="images/games/LoL/Champions/Slayer/NocturneSquare.png.webp"><p>Nocturne</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Rengar"><img src="images/games/LoL/Champions/Slayer/RengarSquare.png.webp"><p>Rengar</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Shaco"><img src="images/games/LoL/Champions/Slayer/ShacoSquare.png.webp"><p>Shaco</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Talon"><img src="images/games/LoL/Champions/Slayer/TalonSquare.png.webp"><p>Talon</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Tryndamere"><img src="images/games/LoL/Champions/Slayer/TryndamereSquare.png.webp"><p>Tryndamere</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Zed"><img src="images/games/LoL/Champions/Slayer/ZedSquare.png.webp"><p>Zed</p></a></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <th>Marksman</th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Ashe"><img src="images/games/LoL/Champions/Marksman/AsheSquare.png.webp"><p>Ashe</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Caitlyn"><img src="images/games/LoL/Champions/Marksman/CaitlynSquare.png.webp"><p>Caitlyn</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Corki"><img src="images/games/LoL/Champions/Marksman/CorkiSquare.png.webp"><p>Corki</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Draven"><img src="images/games/LoL/Champions/Marksman/DravenSquare.png.webp"><p>Draven</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Ezreal"><img src="images/games/LoL/Champions/Marksman/EzrealSquare.png.webp"><p>Ezreal</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Graves"><img src="images/games/LoL/Champions/Marksman/GravesSquare.png.webp"><p>Graves</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Jhin"><img src="images/games/LoL/Champions/Marksman/JhinSquare.png.webp"><p>Jhin</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Jinx"><img src="images/games/LoL/Champions/Marksman/JinxSquare.png.webp"><p>Jinx</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Kalista"><img src="images/games/LoL/Champions/Marksman/KalistaSquare.png.webp"><p>Kalista</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Kindred"><img src="images/games/LoL/Champions/Marksman/KindredSquare.png.webp"><p>Kindred</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Kog%27Maw"><img src="images/games/LoL/Champions/Marksman/Kog'MawSquare.png.webp"><p>Kog'Maw</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Lucian"><img src="images/games/LoL/Champions/Marksman/LucianSquare.png.webp"><p>Lucian</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Miss_Fortune"><img src="images/games/LoL/Champions/Marksman/MissFortuneSquare.png.webp"><p>Miss Fortune</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Quinn"><img src="images/games/LoL/Champions/Marksman/QuinnSquare.png.webp"><p>Quinn</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Sivir"><img src="images/games/LoL/Champions/Marksman/SivirSquare.png.webp"><p>Sivir</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Teemo"><img src="images/games/LoL/Champions/Marksman/TeemoSquare.png.webp"><p>Teemo</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Tristana"><img src="images/games/LoL/Champions/Marksman/TristanaSquare.png.webp"><p>Tristana</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Twitch"><img src="images/games/LoL/Champions/Marksman/TwitchSquare.png.webp"><p>Twitch</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Urgot"><img src="images/games/LoL/Champions/Marksman/UrgotSquare.png.webp"><p>Urgot</p></a></td>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Varus"><img src="images/games/LoL/Champions/Marksman/VarusSquare.png.webp"><p>Varus</p></a></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><a href="http://leagueoflegends.wikia.com/wiki/Vayne"><img src="images/games/LoL/Champions/Marksman/VayneSquare.png.webp"><p>Vayne</p></a></td>
+                    </tr>
+                </table>
+            </div>
+            <button id="twitch-btn" class="accordion">Recommended Twitch Streamer</button>
+            <div id="twitch" class="panel LoL">
+            </div>
+        </div>
+        <div id="footer">
+            <div class="wrapper">
+                <div>
+                    <a href="#" class="button btn-primary" id="copy-right" onclick="document.getElementById('copyright').style.display='block'">Copyright Information</a>
+                    <a href="contact.html" class="button btn-primary">Contact Us</a>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src= "http://player.twitch.tv/js/embed/v1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+    <script src="js/games.js"></script>
+  </body>
+</html>
