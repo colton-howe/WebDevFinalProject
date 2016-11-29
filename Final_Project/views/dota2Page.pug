@@ -1,0 +1,672 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Web App Final
+    // Bootstrap
+    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+    link(type='text/css', rel='stylesheet', href='css/index.css')
+    link(type='text/css', rel='stylesheet', href='css/games.css')
+  body
+    .wrapper
+      .header
+        img#banner(src='images/top-banner.png', alt='banner')
+      #modal.modal
+        form#form.modal-content.animate(action='/processLogin', method='post')
+          .imgcontainer
+            span.close(onclick="document.getElementById('modal').style.display='none'", title='Close Modal') ×
+            img.avatar(src='images/login_avatar.jpg', alt='Avatar')
+          .container
+            label
+              b Username
+            input(type='text', placeholder='Enter Username', name='uname', required='')
+            label
+              b Password
+            input(type='password', placeholder='Enter Password', name='psw', required='')
+            p
+            button.btn.btn-success(type='submit') Login
+          .container(style='background-color:#f1f1f1')
+            button.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='none'") Cancel
+            span.psw
+              a(href='/registrationPage') New User?
+      #copyright.modal
+        .modal-content.animate
+          #copyright-text.container
+            p All copyrights belong to their respective owners.
+            p
+              | Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.
+            p
+              | These images and text are used here only for the education of UOIT students, and are not intended to generate income.
+      #logout.modal
+        form#form.modal-content.animate(action='/processLogout', method='post')
+          #logout-text.container
+            p Are you sure you want to logout?
+            button.btn.btn-success(type='submit') Confirm
+            button.btn.btn-danger(type='button', onclick="document.getElementById('logout').style.display='none'") Cancel
+      nav.navbar.navbar-custom
+        .container-fluid
+          .navbar-header
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/') UOIT eSports
+          #navbar.navbar-collapse.collapse
+            ul.nav.navbar-nav
+              li
+                a(href='/aboutPage') About Us
+              li
+                a(href='/eventsPage') Events
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                  | Games
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    a(href='/lolPage') League of Legends
+                  li.divider(role='separator')
+                  li
+                    a(href='/dota2Page') Dota 2
+                  li.divider(role='separator')
+                  li
+                    a(href='/owPage') Overwatch
+                  li.divider(role='separator')
+                  li
+                    a(href='/scPage') Starcraft 2
+            ul.nav.navbar-nav.navbar-right
+              li
+                button#login.btn.btn-danger(type='button', onclick='handleLogin()') #{message}
+            ul.nav.navbar-nav.navbar-right
+              li
+                a#accountMessage(href='#') #{username}
+    .container
+      .game-banner
+        img(src='images/game-banner/dota2.jpg')
+      button.accordion Dota2 General Info.
+      #summary.panel
+        p
+          | Dota is a competitive game of action and strategy, played both professionally and casually by millions of passionate fans worldwide. Players pick from a pool of over a hundred heroes, forming two teams of five players. Radiant heroes then battle their Dire counterparts to control a gorgeous fantasy landscape, waging campaigns of cunning, stealth, and outright warfare.
+        p
+          | Irresistibly colorful on the surface, Dota is a game of infinite depth and complexity. Every hero has an array of skills and abilities that combine with the skills of their allies in unexpected ways, to ensure that no game is ever remotely alike. This is one of the reasons that the Dota phenomenon has continued to grow. Originating as a fan-made Warcraft 3 modification, Dota was an instant underground hit. After coming to Valve, the original community developers have bridged the gap to a more inclusive audience, so that the rest of the world can experience the same core gameplay, but with the level of polish that only Valve can provide.
+      button.accordion Dota2 Maps and Game Modes
+      #maps.panel
+        p
+          | In Dota2 there is only one official map. However players can download and use player made maps.
+        p
+          | There are two main game modes for competitive play in Dota2: Ranked All Pick and Captains Mode
+        // Ranked All Pick
+        p
+          b Ranked All Pick:
+        p
+          | The All Pick mode in ranked matches works different than the regular All Pick mode, and is called "Ranked       Matchmaking.
+        ul#rules
+          li At first, every player has 15 seconds to vote for a hero to get banned.
+          li All players select a hero at the same time.
+          li A hero may only be voted once. Two players cannot vote for the same hero.
+          li The game displays heroes as they are voted on, but not who voted.
+          li
+            | After the 15 seconds, half of the heroes that were voted on get randomly selected and banned.
+          li
+            | The number of bans is equal to half the total number of votes. If there is an odd number of votes, the number of bans is randomly rounded up or down.
+          li
+            | The random ban selection chooses at most 3 heroes from one specific team's votes, so it is more evenly split.
+          li Right after the banning phase, the picking phase begins.
+          li
+            | Teams alternate picking. Whenever it is a team's turn to pick, anyone on that team can pick for themselves.
+          li
+            | Teams have up to 35 seconds to pick a hero. If the timer expires, each player that hasn't selected a hero loses 2 gold per second. The selection will stay on this team until a hero is picked.
+          li Once a selection is made, it immediately switches to the other team to pick.
+          li Initial starting team is random, but known at the start of the strategy period.
+          li
+            | If a team has not picked and continued losing gold for more than 30 seconds, a player that hasn’t picked is assigned a random hero and the turn resumes to the other team.
+          li
+            | If one player disconnects in this stage before picking a hero, turns continue and other players are able to spawn after 30 seconds of his turn to pick. That player is assigned a random hero upon their reconnect.
+          li
+            | If a player does not enter battle with his hero until after the 0:00 mark, that player's gold is removed and distrubited to all of the players on his team. Similiar to if he had abandoned, but it does not count as an abandon for the sake of the game being safe to leave.
+          li
+            | Players may random manually on their turn, instead of picking. However, the last picking player cannot random.
+          li
+            | Repicking after randoming gives the player a new random hero. The new hero cannot be the same as the previous one.
+        p
+        // Captains Mode
+        p
+          b Captains Mode: 
+          | Each team's captain bans and chooses heroes for the team.
+        ul#rules
+          li Captains mode is the standard format for tournament games.
+          li The captain bans certain heroes, preventing either team from picking the hero.
+          li
+            | The captain also chooses five heroes for their team. After the captains choose five heroes, each player chooses a hero from their captain's selections. 30 seconds are allotted for bans, and 30 seconds for picks.
+          li
+            | Each captain has 130 seconds total bonus time that can be used throughout any selection. If time runs out during a ban selection, no hero will be banned; if time runs out during a pick selection, a random hero will be chosen.
+          li
+            | In Unranked matchmaking, The player that clicks the "become captain" button first is the captain; In Ranked, the captain is the player on each team with the highest solo MMR.
+          li
+            | The starting team is randomly selected in matchmaking; if playing in a private lobby a starting team may be specified. Some heroes that were recently created or tweaked are unavailable in Captain's Mode; they will be added eventually.
+          p
+        p
+          b The following map is the official Dota2 Map: 
+        ul
+          li
+            a#lg-map(href='http://dota2.gamepedia.com/Map')
+              img(src='images/games/Dota2/Maps/Map.jpg')
+              | Dota
+      button#chars.accordion Dota2 Heroes
+      #heroes.panel
+        table.characters
+          tr
+            th Strength
+            td
+              a(href='http://www.dota2.com/hero/Abaddon')
+                img(src='images/games/Dota2/Heroes/Strength/Abaddon.png')
+                p Abaddon
+            td
+              a(href='http://www.dota2.com/hero/Alchemist')
+                img(src='images/games/Dota2/Heroes/Strength/Alchemist.png')
+                p Alchemist
+            td
+              a(href='http://www.dota2.com/hero/Axe')
+                img(src='images/games/Dota2/Heroes/Strength/Axe.png')
+                p Axe
+            td
+              a(href='http://www.dota2.com/hero/Beastmaster')
+                img(src='images/games/Dota2/Heroes/Strength/Beastmaster.png')
+                p Beastmaster
+            td
+              a(href='http://www.dota2.com/hero/Brewmaster')
+                img(src='images/games/Dota2/Heroes/Strength/Brewmaster.png')
+                p Brewmaster
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Bristleback')
+                img(src='images/games/Dota2/Heroes/Strength/Bristleback.png')
+                p Bristleback
+            td
+              a(href='http://www.dota2.com/hero/Centaur_Warrunner')
+                img(src='images/games/Dota2/Heroes/Strength/Centaur_Warrunner.png')
+                p Centaur Warrunner
+            td
+              a(href='http://www.dota2.com/hero/Chaos_Knight')
+                img(src='images/games/Dota2/Heroes/Strength/Chaos_Knight.png')
+                p Chaos Knight
+            td
+              a(href='http://www.dota2.com/hero/Clockwerk')
+                img(src='images/games/Dota2/Heroes/Strength/Clockwerk.png')
+                p Clockwerk
+            td
+              a(href='http://www.dota2.com/hero/Doom')
+                img(src='images/games/Dota2/Heroes/Strength/Doom.png')
+                p Doom
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Dragon_Knight')
+                img(src='images/games/Dota2/Heroes/Strength/Dragon_Knight.png')
+                p Dragon Knight
+            td
+              a(href='http://www.dota2.com/hero/Earth_Spirit')
+                img(src='images/games/Dota2/Heroes/Strength/Earth_Spirit.png')
+                p Earth Spirit
+            td
+              a(href='http://www.dota2.com/hero/Earthshaker')
+                img(src='images/games/Dota2/Heroes/Strength/Earthshaker.png')
+                p Earthshaker
+            td
+              a(href='http://www.dota2.com/hero/Elder_Titan')
+                img(src='images/games/Dota2/Heroes/Strength/Elder_Titan.png')
+                p Elder Titan
+            td
+              a(href='http://www.dota2.com/hero/Huskar')
+                img(src='images/games/Dota2/Heroes/Strength/Huskar.png')
+                p Huskar
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Io')
+                img(src='images/games/Dota2/Heroes/Strength/Io.png')
+                p Io
+            td
+              a(href='http://www.dota2.com/hero/Kunkka')
+                img(src='images/games/Dota2/Heroes/Strength/Kunkka.png')
+                p Kunkka
+            td
+              a(href='http://www.dota2.com/hero/Legion_Commander')
+                img(src='images/games/Dota2/Heroes/Strength/Legion_Commander.png')
+                p Legion Commander
+            td
+              a(href='http://www.dota2.com/hero/Lifestealer')
+                img(src='images/games/Dota2/Heroes/Strength/Lifestealer.png')
+                p Lifestealer
+            td
+              a(href='http://www.dota2.com/hero/Lycan')
+                img(src='images/games/Dota2/Heroes/Strength/Lycan.png')
+                p Lycan
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Magnus')
+                img(src='images/games/Dota2/Heroes/Strength/Magnus.png')
+                p Magnus
+            td
+              a(href='http://www.dota2.com/hero/Night_Stalker')
+                img(src='images/games/Dota2/Heroes/Strength/Night-Stalker.png')
+                p Night Stalker
+            td
+              a(href='http://www.dota2.com/hero/Omniknight')
+                img(src='images/games/Dota2/Heroes/Strength/Omniknight.png')
+                p Omniknight
+            td
+              a(href='http://www.dota2.com/hero/Phoenix')
+                img(src='images/games/Dota2/Heroes/Strength/Phoenix.png')
+                p Phoenix
+            td
+              a(href='http://www.dota2.com/hero/Pudge')
+                img(src='images/games/Dota2/Heroes/Strength/Pudge.png')
+                p Pudge
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Sand_King')
+                img(src='images/games/Dota2/Heroes/Strength/Sand_King.png')
+                p Sand King
+            td
+              a(href='http://www.dota2.com/hero/Slardar')
+                img(src='images/games/Dota2/Heroes/Strength/Slardar.png')
+                p Slardar
+            td
+              a(href='http://www.dota2.com/hero/Spirit_Breaker')
+                img(src='images/games/Dota2/Heroes/Strength/Spirit_Breaker.png')
+                p Spirit Breaker
+            td
+              a(href='http://www.dota2.com/hero/Sven')
+                img(src='images/games/Dota2/Heroes/Strength/Sven.png')
+                p Sven
+            td
+              a(href='http://www.dota2.com/hero/Tidehunter')
+                img(src='images/games/Dota2/Heroes/Strength/Tidehunter.png')
+                p Tidehunter
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Timbersaw')
+                img(src='images/games/Dota2/Heroes/Strength/Timbersaw.png')
+                p Timbersaw
+            td
+              a(href='http://www.dota2.com/hero/Tiny')
+                img(src='images/games/Dota2/Heroes/Strength/Tiny.png')
+                p Tiny
+            td
+              a(href='http://www.dota2.com/hero/Treant_Protector')
+                img(src='images/games/Dota2/Heroes/Strength/Treant_Protector.png')
+                p Treant Protector
+            td
+              a(href='http://www.dota2.com/hero/Tusk')
+                img(src='images/games/Dota2/Heroes/Strength/Tusk.png')
+                p Tusk
+            td
+              a(href='http://www.dota2.com/hero/Underlord')
+                img(src='images/games/Dota2/Heroes/Strength/Underlord.png')
+                p Underlord
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Undying')
+                img(src='images/games/Dota2/Heroes/Strength/Undying.png')
+                p Undying
+            td
+              a(href='http://www.dota2.com/hero/Wraith_King')
+                img(src='images/games/Dota2/Heroes/Strength/Wraith_King.png')
+                p Wraith King
+          tr
+            td
+              br
+          tr
+            th Agility
+            td
+              a(href='http://www.dota2.com/hero/Anti-Mage')
+                img(src='images/games/Dota2/Heroes/Agility/Anti-Mage.png')
+                p Anti-Mage
+            td
+              a(href='http://www.dota2.com/hero/Arc_Warden')
+                img(src='images/games/Dota2/Heroes/Agility/Arc_Warden.png')
+                p Arc Warden
+            td
+              a(href='http://www.dota2.com/hero/Bloodseeker')
+                img(src='images/games/Dota2/Heroes/Agility/Bloodseeker.png')
+                p Bloodseeker
+            td
+              a(href='http://www.dota2.com/hero/Bounty_Hunter')
+                img(src='images/games/Dota2/Heroes/Agility/Bounty_Hunter.png')
+                p Bounty Hunter
+            td
+              a(href='http://www.dota2.com/hero/Broodmother')
+                img(src='images/games/Dota2/Heroes/Agility/Broodmother.png')
+                p Broodmother
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Clinkz')
+                img(src='images/games/Dota2/Heroes/Agility/Clinkz.png')
+                p Clinkz
+            td
+              a(href='http://www.dota2.com/hero/Drow_Ranger')
+                img(src='images/games/Dota2/Heroes/Agility/Drow_Ranger.png')
+                p Drow Ranger
+            td
+              a(href='http://www.dota2.com/hero/Ember_Spirit')
+                img(src='images/games/Dota2/Heroes/Agility/Ember_Spirit.png')
+                p Ember Spirit
+            td
+              a(href='http://www.dota2.com/hero/Faceless_Void')
+                img(src='images/games/Dota2/Heroes/Agility/Faceless_Void.png')
+                p Faceless Void
+            td
+              a(href='http://www.dota2.com/hero/Gyrocopter')
+                img(src='images/games/Dota2/Heroes/Agility/Gyrocopter.png')
+                p Gyrocopter
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Juggernaut')
+                img(src='images/games/Dota2/Heroes/Agility/Juggernaut.png')
+                p Juggernaut
+            td
+              a(href='http://www.dota2.com/hero/Lone_Druid')
+                img(src='images/games/Dota2/Heroes/Agility/Lone_Druid.png')
+                p Lone Druid
+            td
+              a(href='http://www.dota2.com/hero/Luna')
+                img(src='images/games/Dota2/Heroes/Agility/Luna.png')
+                p Luna
+            td
+              a(href='http://www.dota2.com/hero/Medusa')
+                img(src='images/games/Dota2/Heroes/Agility/Medusa.png')
+                p Medusa
+            td
+              a(href='http://www.dota2.com/hero/Meepo')
+                img(src='images/games/Dota2/Heroes/Agility/Meepo.png')
+                p Meepo
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Mirana')
+                img(src='images/games/Dota2/Heroes/Agility/Mirana.png')
+                p Mirana
+            td
+              a(href='http://www.dota2.com/hero/Morphling')
+                img(src='images/games/Dota2/Heroes/Agility/Morphling.png')
+                p Morphling
+            td
+              a(href='http://www.dota2.com/hero/Naga_Siren')
+                img(src='images/games/Dota2/Heroes/Agility/Naga_Siren.png')
+                p Naga Siren
+            td
+              a(href='http://www.dota2.com/hero/Nyx_Assassin')
+                img(src='images/games/Dota2/Heroes/Agility/Nyx_Assassin.png')
+                p Nyx Assassin
+            td
+              a(href='http://www.dota2.com/hero/Phantom_Assassin')
+                img(src='images/games/Dota2/Heroes/Agility/Phantom_Assassin.png')
+                p Phantom Assassin
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Phantom_Lancer')
+                img(src='images/games/Dota2/Heroes/Agility/Phantom_Lancer.png')
+                p Phantom Lancer
+            td
+              a(href='http://www.dota2.com/hero/Razor')
+                img(src='images/games/Dota2/Heroes/Agility/Razor.png')
+                p Razor
+            td
+              a(href='http://www.dota2.com/hero/Riki')
+                img(src='images/games/Dota2/Heroes/Agility/Riki.png')
+                p Riki
+            td
+              a(href='http://www.dota2.com/hero/Shadow_Fiend')
+                img(src='images/games/Dota2/Heroes/Agility/Shadow_Fiend.png')
+                p Shadow Fiend
+            td
+              a(href='http://www.dota2.com/hero/Slark')
+                img(src='images/games/Dota2/Heroes/Agility/Slark.png')
+                p Slark
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Sniper')
+                img(src='images/games/Dota2/Heroes/Agility/Sniper.png')
+                p Sniper
+            td
+              a(href='http://www.dota2.com/hero/Spectre')
+                img(src='images/games/Dota2/Heroes/Agility/Spectre.png')
+                p Spectre
+            td
+              a(href='http://www.dota2.com/hero/Templar_Assassin')
+                img(src='images/games/Dota2/Heroes/Agility/Templar_Assassin.png')
+                p Templar Assassin
+            td
+              a(href='http://www.dota2.com/hero/Terrorblade')
+                img(src='images/games/Dota2/Heroes/Agility/Terrorblade.png')
+                p Terrorblade
+            td
+              a(href='http://www.dota2.com/hero/Troll_Warlord')
+                img(src='images/games/Dota2/Heroes/Agility/Troll_Warlord.png')
+                p Troll Warlord
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Ursa')
+                img(src='images/games/Dota2/Heroes/Agility/Ursa.png')
+                p Ursa
+            td
+              a(href='http://www.dota2.com/hero/Vengeful_Spirit')
+                img(src='images/games/Dota2/Heroes/Agility/Vengeful_Spirit.png')
+                p Vengeful Spirit
+            td
+              a(href='http://www.dota2.com/hero/Venomancer')
+                img(src='images/games/Dota2/Heroes/Agility/Venomancer.png')
+                p Venomancer
+            td
+              a(href='http://www.dota2.com/hero/Viper')
+                img(src='images/games/Dota2/Heroes/Agility/Viper.png')
+                p Viper
+            td
+              a(href='http://www.dota2.com/hero/Weaver')
+                img(src='images/games/Dota2/Heroes/Agility/Weaver.png')
+                p Weaver
+          tr
+            td
+              br
+          tr
+            th Intelligence
+            td
+              a(href='http://www.dota2.com/hero/Ancient_Apparition')
+                img(src='images/games/Dota2/Heroes/Intelligence/Ancient_Apparition.png')
+                p Ancient Apparition
+            td
+              a(href='http://www.dota2.com/hero/Bane')
+                img(src='images/games/Dota2/Heroes/Intelligence/Bane.png')
+                p Bane
+            td
+              a(href='http://www.dota2.com/hero/Batrider')
+                img(src='images/games/Dota2/Heroes/Intelligence/Batrider.png')
+                p Batrider
+            td
+              a(href='http://www.dota2.com/hero/Chen')
+                img(src='images/games/Dota2/Heroes/Intelligence/Chen.png')
+                p Chen
+            td
+              a(href='http://www.dota2.com/hero/Crystal_Maiden')
+                img(src='images/games/Dota2/Heroes/Intelligence/Crystal_Maiden.png')
+                p Crystal Maiden
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Dark_Seer')
+                img(src='images/games/Dota2/Heroes/Intelligence/Dark_Seer.png')
+                p Dark Seer
+            td
+              a(href='http://www.dota2.com/hero/Dazzle')
+                img(src='images/games/Dota2/Heroes/Intelligence/Dazzle.png')
+                p Dazzle
+            td
+              a(href='http://www.dota2.com/hero/Death_Prophet')
+                img(src='images/games/Dota2/Heroes/Intelligence/Death_Prophet.png')
+                p Death Prophet
+            td
+              a(href='http://www.dota2.com/hero/Disruptor')
+                img(src='images/games/Dota2/Heroes/Intelligence/Disruptor.png')
+                p Disruptor
+            td
+              a(href='http://www.dota2.com/hero/Enchantress')
+                img(src='images/games/Dota2/Heroes/Intelligence/Enchantress.png')
+                p Enchantress
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Enigma')
+                img(src='images/games/Dota2/Heroes/Intelligence/Enigma.png')
+                p Enigma
+            td
+              a(href='http://www.dota2.com/hero/Invoker')
+                img(src='images/games/Dota2/Heroes/Intelligence/Invoker.png')
+                p Invoker
+            td
+              a(href='http://www.dota2.com/hero/Jakiro')
+                img(src='images/games/Dota2/Heroes/Intelligence/Jakiro.png')
+                p Jakiro
+            td
+              a(href='http://www.dota2.com/hero/Keeper_of_the_Light')
+                img(src='images/games/Dota2/Heroes/Intelligence/Keeper_of_the_Light.png')
+                p Keeper of the Light
+            td
+              a(href='http://www.dota2.com/hero/Leshrac')
+                img(src='images/games/Dota2/Heroes/Intelligence/Leshrac.png')
+                p Leshrac
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Lich')
+                img(src='images/games/Dota2/Heroes/Intelligence/Lich.png')
+                p Lich
+            td
+              a(href='http://www.dota2.com/hero/Lina')
+                img(src='images/games/Dota2/Heroes/Intelligence/Lina.png')
+                p Lina
+            td
+              a(href='http://www.dota2.com/hero/Lion')
+                img(src='images/games/Dota2/Heroes/Intelligence/Lion.png')
+                p Lion
+            td
+              a(href='http://www.dota2.com/hero/Natures_Prophet')
+                img(src="images/games/Dota2/Heroes/Intelligence/Nature's_Prophet.png")
+                p Nature's Prophet
+            td
+              a(href='http://www.dota2.com/hero/Necrophos')
+                img(src='images/games/Dota2/Heroes/Intelligence/Necrophos.png')
+                p Necrophos
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Ogre_Magi')
+                img(src='images/games/Dota2/Heroes/Intelligence/Ogre_Magi.png')
+                p Ogre Magi
+            td
+              a(href='http://www.dota2.com/hero/Oracle')
+                img(src='images/games/Dota2/Heroes/Intelligence/Oracle.png')
+                p Oracle
+            td
+              a(href='http://www.dota2.com/hero/Outworld_Devourer')
+                img(src='images/games/Dota2/Heroes/Intelligence/Outworld_Devourer.png')
+                p Outworld Devourer
+            td
+              a(href='http://www.dota2.com/hero/Puck')
+                img(src='images/games/Dota2/Heroes/Intelligence/Puck.png')
+                p Puck
+            td
+              a(href='http://www.dota2.com/hero/Pugna')
+                img(src='images/games/Dota2/Heroes/Intelligence/Pugna.png')
+                p Pugna
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Queen_of_Pain')
+                img(src='images/games/Dota2/Heroes/Intelligence/Queen_of_Pain.png')
+                p Queen of Pain
+            td
+              a(href='http://www.dota2.com/hero/Rubick')
+                img(src='images/games/Dota2/Heroes/Intelligence/Rubick.png')
+                p Rubick
+            td
+              a(href='http://www.dota2.com/hero/Shadow_Demon')
+                img(src='images/games/Dota2/Heroes/Intelligence/Shadow_Demon.png')
+                p Shadow Demon
+            td
+              a(href='http://www.dota2.com/hero/Shadow_Shaman')
+                img(src='images/games/Dota2/Heroes/Intelligence/Shadow_Shaman.png')
+                p Shadow Shaman
+            td
+              a(href='http://www.dota2.com/hero/Silencer')
+                img(src='images/games/Dota2/Heroes/Intelligence/Silencer.png')
+                p Silencer
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Skywrath_Mage')
+                img(src='images/games/Dota2/Heroes/Intelligence/Skywrath_Mage.png')
+                p Skywrath Mage
+            td
+              a(href='http://www.dota2.com/hero/Storm_Spirit')
+                img(src='images/games/Dota2/Heroes/Intelligence/Storm_Spirit.png')
+                p Storm Spirit
+            td
+              a(href='http://www.dota2.com/hero/Techies')
+                img(src='images/games/Dota2/Heroes/Intelligence/Techies.png')
+                p Techies
+            td
+              a(href='http://www.dota2.com/hero/Tinker')
+                img(src='images/games/Dota2/Heroes/Intelligence/Tinker.png')
+                p Tinker
+            td
+              a(href='http://www.dota2.com/hero/Visage')
+                img(src='images/games/Dota2/Heroes/Intelligence/Visage.png')
+                p Visage
+          tr
+            th
+            td
+              a(href='http://www.dota2.com/hero/Warlock')
+                img(src='images/games/Dota2/Heroes/Intelligence/Warlock.png')
+                p Warlock
+            td
+              a(href='http://www.dota2.com/hero/Windranger')
+                img(src='images/games/Dota2/Heroes/Intelligence/Windranger.png')
+                p Windranger
+            td
+              a(href='http://www.dota2.com/hero/Winter_Wyvern')
+                img(src='images/games/Dota2/Heroes/Intelligence/Winter_Wyvern.png')
+                p Winter Wyvern
+            td
+              a(href='http://www.dota2.com/hero/Witch_Doctor')
+                img(src='images/games/Dota2/Heroes/Intelligence/Witch_Doctor.png')
+                p Witch Doctor
+            td
+              a(href='http://www.dota2.com/hero/Zeus')
+                img(src='images/games/Dota2/Heroes/Intelligence/Zeus.png')
+                p
+      button#twitch-btn.accordion Recommended Twitch Streamer
+      #twitch.panel.Dota2
+    #footer
+      .wrapper
+        div
+          a#copy-right.button.btn-primary(href='#', onclick="document.getElementById('copyright').style.display='block'") Copyright Information
+          a
+          a.button.btn-primary(href='contact.html') Contact Us
+    script(src='http://player.twitch.tv/js/embed/v1.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+    script(src='javascript/index.js')
+    script(src='javascript/games.js')

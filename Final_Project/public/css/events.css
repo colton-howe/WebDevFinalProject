@@ -1,0 +1,16 @@
+#content {
+  color: #0077cb;
+  padding-bottom: 50px;
+  margin: auto;
+  text-align: center;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+}
+
+img {
+  height: 500px;
+}

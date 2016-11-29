@@ -1,0 +1,178 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		title Web App Final
+		// Bootstrap
+		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+		link(type='text/css', rel='stylesheet', href='css/index.css')
+	body
+		.wrapper
+			.header
+				img#banner(src='images/top-banner.png', alt='banner')
+			#modal.modal
+				form#form.modal-content.animate(action='/processLogin', method='post')
+					.imgcontainer
+						span.close(onclick="document.getElementById('modal').style.display='none'", title='Close Modal') ×
+						img.avatar(src='images/login_avatar.jpg', alt='Avatar')
+					.container
+						label
+							b Username
+						input(type='text', placeholder='Enter Username', name='uname', required='')
+						label
+							b Password
+						input(type='password', placeholder='Enter Password', name='psw', required='')
+						p !{error}
+						button.btn.btn-success(type='submit') Login
+					.container(style='background-color:#f1f1f1')
+						button.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='none'") Cancel
+						span.psw
+							a(href='/registrationPage') New User?
+			#copyright.modal
+				.modal-content.animate
+					#copyright-text.container
+						p All copyrights belong to their respective owners.
+						p
+							| Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.
+						p
+							| These images and text are used here only for the education of UOIT students, and are not intended to generate income.
+			#logout.modal
+				form#form.modal-content.animate(action='/processLogout', method='post')
+					#logout-text.container
+						p Are you sure you want to logout?
+						button.btn.btn-success(type='submit') Confirm
+						button.btn.btn-danger(type='button', onclick="document.getElementById('logout').style.display='none'") Cancel
+			nav.navbar.navbar-custom
+				.container-fluid
+					.navbar-header
+						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand(href='/') UOIT eSports
+					#navbar.navbar-collapse.collapse
+						ul.nav.navbar-nav
+							li
+								a(href='/aboutPage') About Us
+							li
+								a(href='/eventsPage') Events
+							li.dropdown
+								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+									| Games
+									span.caret
+								ul.dropdown-menu
+									li
+										a(href='/lolPage') League of Legends
+									li.divider(role='separator')
+									li
+										a(href='/dota2Page') Dota 2
+									li.divider(role='separator')
+									li
+										a(href='/owPage') Overwatch
+									li.divider(role='separator')
+									li
+										a(href='/scPage') Starcraft 2
+						ul.nav.navbar-nav.navbar-right
+							li
+								button#login.btn.btn-danger(type='button', onclick='handleLogin()') !{message}
+						ul.nav.navbar-nav.navbar-right
+							li
+								a#accountMessage(href='#') !{username}
+			.carousel-container
+				#myCarousel.carousel.slide(data-ride='carousel')
+					// Indicators
+					ol.carousel-indicators
+						li.active(data-target='#myCarousel', data-slide-to='0')
+						li(data-target='#myCarousel', data-slide-to='1')
+						li(data-target='#myCarousel', data-slide-to='2')
+						li(data-target='#myCarousel', data-slide-to='3')
+						li(data-target='#myCarousel', data-slide-to='4')
+						li(data-target='#myCarousel', data-slide-to='5')
+						li(data-target='#myCarousel', data-slide-to='6')
+						li(data-target='#myCarousel', data-slide-to='7')
+						li(data-target='#myCarousel', data-slide-to='8')
+						li(data-target='#myCarousel', data-slide-to='9')
+						li(data-target='#myCarousel', data-slide-to='10')
+						li(data-target='#myCarousel', data-slide-to='11')
+						li(data-target='#myCarousel', data-slide-to='12')
+						li(data-target='#myCarousel', data-slide-to='13')
+						li(data-target='#myCarousel', data-slide-to='14')
+						li(data-target='#myCarousel', data-slide-to='15')
+					// Wrapper for slides
+					.carousel-inner(role='listbox')
+						// LoL Items
+						.item.active
+							img(src='images/carousel/LoL-1.jpg', alt='LoL 1')
+						.item
+							img(src='images/carousel/LoL-2.jpg', alt='LoL 2')
+						.item
+							img(src='images/carousel/LoL-3.jpg', alt='LoL 3')
+						.item
+							img(src='images/carousel/LoL-4.jpg', alt='LoL 4')
+						// Dota2 Items
+						.item
+							img(src='images/carousel/Dota2-1.jpg', alt='Dota2 1')
+						.item
+							img(src='images/carousel/Dota2-2.jpg', alt='Dota2 2')
+						.item
+							img(src='images/carousel/Dota2-3.jpg', alt='Dota2 3')
+						.item
+							img(src='images/carousel/Dota2-4.jpg', alt='Dota2 4')
+						// OW Items
+						.item
+							img(src='images/carousel/OW-1.jpg', alt='OW 1')
+						.item
+							img(src='images/carousel/OW-2.jpg', alt='OW 2')
+						.item
+							img(src='images/carousel/OW-3.jpg', alt='OW 3')
+						.item
+							img(src='images/carousel/OW-4.jpg', alt='OW 4')
+						// SC2 Items
+						.item
+							img(src='images/carousel/SC2-1.jpg', alt='SC2 1')
+						.item
+							img(src='images/carousel/SC2-2.jpg', alt='SC2 2')
+						.item
+							img(src='images/carousel/SC2-3.jpg', alt='SC2 3')
+						.item
+							img(src='images/carousel/SC2-4.jpg', alt='SC2 4')
+					// Left and right controls
+					a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+						span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+						span.sr-only Previous
+					a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+						span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+						span.sr-only Next
+			.container
+				.game-banner.LoL
+					a(href='/lolPage')
+						img(src='images/game-banner/LoL.jpg')
+					p.banner-text
+						| League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements. Two teams of powerful champions, each with a unique design and playstyle, battle head-to-head across multiple battlefields and game modes.
+				.game-banner.Dota2
+					a(href='/dota2Page')
+						img(src='images/game-banner/dota2.jpg')
+					p.banner-text
+						| Dota is a competitive game of action and strategy, played both professionally and casually by millions of passionate fans worldwide. Players pick from a pool of over a hundred heroes, forming two teams of five players.
+				.game-banner.OW
+					a(href='/owPage')
+						img(src='images/game-banner/OW.png')
+					p.banner-text
+						| In a time of global crisis, an international task force of heroes banded together to restore peace to a war-torn world. This organization, known as Overwatch, ended the crisis and helped maintain peace for a generation, inspiring an era of exploration, innovation, and discovery. After many years, Overwatch's influence waned and it was eventually disbanded. Now in the wake of its dismantling, conflict is rising once again. Overwatch may be gone... but the world still needs heroes.
+				.game-banner.SC2
+					a(href='/scPage')
+						img(src='images/game-banner/SC2.jpg')
+					p.banner-text
+						| StarCraft 2 is a real-time strategy game, players build armies and vie for control of the battlefield. The armies in play can be as small as a single squad of Marines or as large as a full-blown planetary invasion force. As commander, you observe the battlefield from a top-down perspective and issue orders to your units in real time. Strategic thinking is key to success; you need to gather information about your opponents, anticipate their moves, outflank their attacks, and formulate a winning strategy.
+			#footer
+				.wrapper
+					div
+						a#copy-right.button.btn-primary(href='#', onclick="document.getElementById('copyright').style.display='block'") Copyright Information
+						a
+						a.button.btn-primary(href='/contactPage') Contact Us
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+		script(src='javascript/index.js')

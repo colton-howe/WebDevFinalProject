@@ -1,0 +1,466 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		title Web App Final
+		// Bootstrap
+		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+		link(type='text/css', rel='stylesheet', href='css/index.css')
+		link(type='text/css', rel='stylesheet', href='css/games.css')
+	body
+		.wrapper
+			.header
+				img#banner(src='images/top-banner.png', alt='banner')
+			#modal.modal
+				form#form.modal-content.animate(action='/processLogin', method='post')
+					.imgcontainer
+						span.close(onclick="document.getElementById('modal').style.display='none'", title='Close Modal') ×
+						img.avatar(src='images/login_avatar.jpg', alt='Avatar')
+					.container
+						label
+							b Username
+						input(type='text', placeholder='Enter Username', name='uname', required='')
+						label
+							b Password
+						input(type='password', placeholder='Enter Password', name='psw', required='')
+						p
+						button.btn.btn-success(type='submit') Login
+					.container(style='background-color:#f1f1f1')
+						button.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='none'") Cancel
+						span.psw
+							a(href='/registrationPage') New User?
+			#copyright.modal
+				.modal-content.animate
+					#copyright-text.container
+						p All copyrights belong to their respective owners.
+						p
+							| Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.
+						p
+							| These images and text are used here only for the education of UOIT students, and are not intended to generate income.
+			#logout.modal
+				form#form.modal-content.animate(action='/processLogout', method='post')
+					#logout-text.container
+						p Are you sure you want to logout?
+						button.btn.btn-success(type='submit') Confirm
+						button.btn.btn-danger(type='button', onclick="document.getElementById('logout').style.display='none'") Cancel
+			nav.navbar.navbar-custom
+				.container-fluid
+					.navbar-header
+						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand(href='/') UOIT eSports
+					#navbar.navbar-collapse.collapse
+						ul.nav.navbar-nav
+							li
+								a(href='/aboutPage') About Us
+							li
+								a(href='/eventsPage') Events
+							li.dropdown
+								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+									| Games
+									span.caret
+								ul.dropdown-menu
+									li
+										a(href='/lolPage') League of Legends
+									li.divider(role='separator')
+									li
+										a(href='/dota2Page') Dota 2
+									li.divider(role='separator')
+									li
+										a(href='/owPage') Overwatch
+									li.divider(role='separator')
+									li
+										a(href='/scPage') Starcraft 2
+						ul.nav.navbar-nav.navbar-right
+							li
+								button#login.btn.btn-danger(type='button', onclick='handleLogin()') !{message}
+						ul.nav.navbar-nav.navbar-right
+							li
+								a#accountMessage(href='#') !{username}
+			.container
+				.game-banner
+					img(src='images/game-banner/SC2.jpg')
+				button.accordion StarCraft II General Info.
+				#summary.panel
+					p
+						b Welcome to the Sector
+					p
+						| With StarCraft II, you'll experience the beginnings of the real-time strategy classic and the epic conclusion to the trilogy. Play as Terran army and bring down the nefarious Dominion, reclaim your living empire at the Heart of the Zerg Swarm, or guide the ethereal Protoss fleet as they struggle to unite the three races in the ultimate battle for survival. The future is in your hands.
+				button.accordion StarCraft II Maps and Game Modes
+				#maps.panel
+					p
+						| In StarCraft II there is only one competitive match type, however the amount of players vary.
+					// Game Type
+					ul
+						p
+							| StarCraft II is a strategy game played in real-time. You see the action from a top-down perspective and command your armies to gain control of the battlefield and ultimately defeat your opponents. The game’s single-player campaign focuses on the terrans, but you can play multiplayer matches as any of the three StarCraft II races: the terrans, the protoss, or the zerg.
+						p
+							| Each race has access to unique units; these units fill specific roles on the battlefield. Combining different units to form versatile armies is one path to victory.
+						p
+							| The most basic units at your command are your workers. They harvest the resources you need to expand your base and to add more units to your growing army, and your workers also create new buildings. More advanced units become available once your base meets certain requirements, such as having constructed certain buildings or researched certain technologies.
+						p
+							| In multiplayer matches, you win the game when you’ve wiped all your enemy’s buildings off the map or if the other players surrender to you.
+					p Majority of competitive maps used in StarCraft II are made by the community.
+					br
+					p
+						b Competitive Player Count
+					// 1v1
+					p
+						b 1v1: 
+						| 1v1 is regarded as the most competitive multiplayer dynamic as it is a head to head battle of wits, and strategy.
+					p The following maps are the current top three 1v1 maps: 
+					ul
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Daybreak')
+								img(src='images/games/SC2/Maps/Daybreak.jpg')
+								|  DayBreak
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Echo')
+								img(src='images/games/SC2/Maps/Echo_LE.jpg')
+								|  Echo
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Habitation_Station')
+								img(src='images/games/SC2/Maps/Habitation_Station.jpg')
+								|  Habitation Station
+					// 2v2
+					p
+						b 2v2: 
+						| 2v2 is  one of the more competitive game modes, however it doesn't quite compare to 1v1.
+						br
+						|                     In 2v2 you and one teammate must outwit your opponents to bring victory
+					p The following maps are the current top three 2v2 maps: 
+					ul
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Fields_of_Death')
+								img(src='images/games/SC2/Maps/Fields_of_Death.jpg')
+								|  Fields of Death
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Magma_Mines')
+								img(src='images/games/SC2/Maps/Magma_Mines.jpg')
+								|  Magma Mines
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Shrines_of_Lizul')
+								img(src='images/games/SC2/Maps/Shrines_of_Lizul_0.1.jpg')
+								|  Shrines of Lizul
+					// 3v3
+					p
+						b 3v3: 
+						| 3v3 is used in competitive games however it is not as common as 2v2 or 1v1.
+						br
+						|                     In 3v3 you and two teammates must outwit your opponents to bring victory.
+					p The following maps are the current top three 3v3 maps: 
+					ul
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Avalon_Labs')
+								img(src='images/games/SC2/Maps/Avalon_Labs.jpg')
+								|  Avalon Labs
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Backcountry')
+								img(src='images/games/SC2/Maps/Backcountry.jpg')
+								|  Backcountry
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Doraelus_Hills')
+								img(src='images/games/SC2/Maps/Doraelus_Hills.jpg')
+								|  Doraelus Hills
+					// 4v4
+					p
+						b 4b4: 
+						| 4v4 is rarely used in competitive, however it does show up here and there.
+						br
+						|                     In 4v4 you and three teammate must outwit your opponents to bring victory
+					p The following maps are the current top three 4v4 maps: 
+					ul
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Asper_Mountain')
+								img(src='images/games/SC2/Maps/Asper_Mountain.jpg')
+								|  Asper Mountain
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Garden_of_Shadows')
+								img(src='images/games/SC2/Maps/Garden_of_Shadows_0.1.jpg')
+								|  Garden of Shadows
+						li
+							a(href='http://wiki.teamliquid.net/starcraft2/Hidden_Caves')
+								img(src='images/games/SC2/Maps/Hidden_Caves.jpg')
+								|  Hidden Caves
+				button#chars.accordion StarCraft II Races
+				#heroes.panel
+					p
+						| Within StarCraft II players have access to 
+						b three
+						|  different races.
+						br
+						|                     The races are as follows: 
+						b Terran
+						| , 
+						b Zerg
+						| , and 
+						b Protoss
+						| .
+						br
+						|                     Each race has it's own unique units, playstyle, and strategies.
+					table#sc2units.characters
+						tr
+							th
+								a(href='http://us.battle.net/sc2/en/game/race/terran/')
+									img(src='images/games/SC2/Races/terran.png')
+									br
+									| Terran
+						tr
+						tr
+							th Units
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/scv')
+									img(src='images/games/SC2/Races/Terran/SCV.png')
+									p SCV
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/marine')
+									img(src='images/games/SC2/Races/Terran/Marine_sc2.png')
+									p Marine
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/marauder')
+									img(src='images/games/SC2/Races/Terran/Marauder.png')
+									p Marauder
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/reaper')
+									img(src='images/games/SC2/Races/Terran/Reaper.png')
+									p Reaper
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/ghost')
+									img(src='images/games/SC2/Races/Terran/Ghost_sc2.png')
+									p Ghost
+						tr
+							th
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/hellion')
+									img(src='images/games/SC2/Races/Terran/HellionHotS.png')
+									p Hellion
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/siege-tank')
+									img(src='images/games/SC2/Races/Terran/Siege_Tank.png')
+									p Siege Tank
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/thor')
+									img(src='images/games/SC2/Races/Terran/Thor.png')
+									p Thor
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/viking')
+									img(src='images/games/SC2/Races/Terran/Viking.png')
+									p Viking
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/medivac')
+									img(src='images/games/SC2/Races/Terran/Medivac.png')
+									p Medivac
+						tr
+							th
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/raven')
+									img(src='images/games/SC2/Races/Terran/Raven.png')
+									p Raven
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/banshee')
+									img(src='images/games/SC2/Races/Terran/Banshee.png')
+									p Banshee
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/battlecruiser')
+									img(src='images/games/SC2/Races/Terran/Battle_Cruiser.png')
+									p Battle Cruiser
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/hellbat')
+									img(src='images/games/SC2/Races/Terran/Battle_Hellion.png')
+									p Hellbat
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/widow-mine')
+									img(src='images/games/SC2/Races/Terran/Widow_Mine.png')
+									p Widow Mine
+						tr
+							td
+								br
+						tr
+							th
+								a(href='http://us.battle.net/sc2/en/game/race/protoss/')
+									img(src='images/games/SC2/Races/zerg.png')
+									br
+									| Zerg
+						tr
+							th Units
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/larva')
+									img(src='images/games/SC2/Races/Zerg/Larva_sc2.png')
+									p Larva
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/drone')
+									img(src='images/games/SC2/Races/Zerg/Drone_sc2.png')
+									p Drone
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/overlord')
+									img(src='images/games/SC2/Races/Zerg/Overlord_sc2.png')
+									p Overlord
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/zergling')
+									img(src='images/games/SC2/Races/Zerg/Zergling_sc2.png')
+									p Zergling
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/queen')
+									img(src='images/games/SC2/Races/Zerg/Queen.jpg')
+									p Queen
+						tr
+							th
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/hydralisk')
+									img(src='images/games/SC2/Races/Zerg/Hydralisk_sc2.png')
+									p Hydralisk
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/baneling')
+									img(src='images/games/SC2/Races/Zerg/Baneling.png')
+									p Baneling
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/overseer')
+									img(src='images/games/SC2/Races/Zerg/Overseer.png')
+									p Overseer
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/roach')
+									img(src='images/games/SC2/Races/Zerg/Roach.png')
+									p Roach
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/infestor')
+									img(src='images/games/SC2/Races/Zerg/Infestor.png')
+									p Infestor
+						tr
+							th
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/mutalisk')
+									img(src='images/games/SC2/Races/Zerg/Mutalisk_sc2.png')
+									p Mutalisk
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/corruptor')
+									img(src='images/games/SC2/Races/Zerg/Corrupter.png')
+									p Corruptor
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/nydus-worm')
+									img(src='images/games/SC2/Races/Zerg/600px-Nydus_Worm.png')
+									p Nydus Worm
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/ultralisk')
+									img(src='images/games/SC2/Races/Zerg/600px-Ultralisk_sc2.png')
+									p Ultralisk
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/brood-lord')
+									img(src='images/games/SC2/Races/Zerg/Brood_Lord.png')
+									p Brood Lord
+						tr
+							th
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/swarm-host')
+									img(src='images/games/SC2/Races/Zerg/Swarm_Host.jpg')
+									p Swarm Host
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/viper')
+									img(src='images/games/SC2/Races/Zerg/Viper.jpg')
+									p Viper
+						tr
+							td
+								br
+						tr
+							th
+								a(href='http://us.battle.net/sc2/en/game/race/protoss/')
+									img(src='images/games/SC2/Races/protoss.png')
+									br
+									| Protoss
+						tr
+							th Units
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/probe')
+									img(src='images/games/SC2/Races/Protoss/Probe_sc2.png')
+									p Probe
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/zealot')
+									img(src='images/games/SC2/Races/Protoss/Zealot_sc2.png')
+									p Zealot
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/stalker')
+									img(src='images/games/SC2/Races/Protoss/Stalker.png')
+									p Stalker
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/sentry')
+									img(src='images/games/SC2/Races/Protoss/Sentry.png')
+									p Sentry
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/observer')
+									img(src='images/games/SC2/Races/Protoss/Observer_sc2.png')
+									p Observer
+						tr
+							th
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/immortal')
+									img(src='images/games/SC2/Races/Protoss/Immortal.png')
+									p Immortal
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/warp-prism')
+									img(src='images/games/SC2/Races/Protoss/Warp_Prism.png')
+									p Warp Prism
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/colossus')
+									img(src='images/games/SC2/Races/Protoss/Colossus.png')
+									p Colossus
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/phoenix')
+									img(src='images/games/SC2/Races/Protoss/Phoenix.png')
+									p Phoenix
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/void-ray')
+									img(src='images/games/SC2/Races/Protoss/Void_Ray.png')
+									p Void Ray
+						tr
+							th
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/high-templar')
+									img(src='images/games/SC2/Races/Protoss/High_Templar.png')
+									p High Templar
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/dark-templar')
+									img(src='images/games/SC2/Races/Protoss/Dark_Templar.png')
+									p Dark Templar
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/archon')
+									img(src='images/games/SC2/Races/Protoss/Archon_sc2.png')
+									p Archon
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/carrier')
+									img(src='images/games/SC2/Races/Protoss/Carrier_sc2.png')
+									p Carrier
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/mothership')
+									img(src='images/games/SC2/Races/Protoss/600px-Mothership.png')
+									p Mothership
+						tr
+							th
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/mothership-core')
+									img(src='images/games/SC2/Races/Protoss/Mothership_Core.jpg')
+									p Mothership Core
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/oracle')
+									img(src='images/games/SC2/Races/Protoss/Oracle_HoTS_Beta.jpg')
+									p Oracle
+							td
+								a(href='http://us.battle.net/sc2/en/game/unit/tempest')
+									img(src='images/games/SC2/Races/Protoss/Tempest.png')
+									p Tempest
+				button#twitch-btn.accordion Recommended Twitch Streamer
+				#twitch.panel.SC2
+			#footer
+				.wrapper
+					div
+						a#copy-right.button.btn-primary(href='#', onclick="document.getElementById('copyright').style.display='block'") Copyright Information
+						a
+						a.button.btn-primary(href='contact.html') Contact Us
+		script(src='http://player.twitch.tv/js/embed/v1.js')
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+		script(src='javascript/index.js')
+		script(src='javascript/games.js')

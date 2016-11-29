@@ -1,0 +1,312 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		title Web App Final
+		// Bootstrap
+		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+		link(type='text/css', rel='stylesheet', href='css/index.css')
+		link(type='text/css', rel='stylesheet', href='css/games.css')
+	body
+		.wrapper
+			.header
+				img#banner(src='images/top-banner.png', alt='banner')
+			#modal.modal
+				form#form.modal-content.animate(action='/processLogin', method='post')
+					.imgcontainer
+						span.close(onclick="document.getElementById('modal').style.display='none'", title='Close Modal') ×
+						img.avatar(src='images/login_avatar.jpg', alt='Avatar')
+					.container
+						label
+							b Username
+						input(type='text', placeholder='Enter Username', name='uname', required='')
+						label
+							b Password
+						input(type='password', placeholder='Enter Password', name='psw', required='')
+						p !{error}
+						button.btn.btn-success(type='submit') Login
+					.container(style='background-color:#f1f1f1')
+						button.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='none'") Cancel
+						span.psw
+							a(href='/registrationPage') New User?
+			#copyright.modal
+				.modal-content.animate
+					#copyright-text.container
+						p All copyrights belong to their respective owners.
+						p
+							| Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.
+						p
+							| These images and text are used here only for the education of UOIT students, and are not intended to generate income.
+			#logout.modal
+				form#form.modal-content.animate(action='/processLogout', method='post')
+					#logout-text.container
+						p Are you sure you want to logout?
+						button.btn.btn-success(type='submit') Confirm
+						button.btn.btn-danger(type='button', onclick="document.getElementById('logout').style.display='none'") Cancel
+			nav.navbar.navbar-custom
+				.container-fluid
+					.navbar-header
+						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand(href='/') UOIT eSports
+					#navbar.navbar-collapse.collapse
+						ul.nav.navbar-nav
+							li
+								a(href='/aboutPage') About Us
+							li
+								a(href='/eventsPage') Events
+							li.dropdown
+								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+									| Games
+									span.caret
+								ul.dropdown-menu
+									li
+										a(href='/lolPage') League of Legends
+									li.divider(role='separator')
+									li
+										a(href='/dota2Page') Dota 2
+									li.divider(role='separator')
+									li
+										a(href='/owPage') Overwatch
+									li.divider(role='separator')
+									li
+										a(href='/scPage') Starcraft 2
+						ul.nav.navbar-nav.navbar-right
+							li
+								button#login.btn.btn-danger(type='button', onclick='handleLogin()') !{message}
+						ul.nav.navbar-nav.navbar-right
+							li
+								a#accountMessage(href='#') !{username}
+			.container
+				.game-banner
+					img(src='images/game-banner/OW.png')
+				button.accordion Overwatch General Info.
+				#summary.panel
+					p
+						| In a time of global crisis, an international task force of heroes banded together to restore peace to a war-torn world. This organization, known as Overwatch, ended the crisis and helped maintain peace for a generation, inspiring an era of exploration, innovation, and discovery. After many years, Overwatch's influence waned and it was eventually disbanded. Now in the wake of its dismantling, conflict is rising once again. Overwatch may be gone... but the world still needs heroes.
+					p
+						b Choose A Hero:
+						|  Overwatch features a wide array of unique Heroes, ranging from a time-jumping adventurer, to an armored, rocket-hammer-wielding warrior, to a transcendent robot monk. Every hero plays differently, and mastering their Abilities is the key to unlocking their potential. No two heroes are the same.
+					p
+						b Play Your Role:
+						|  Whether you're engaging in combat on the front line, providing defensive cover with your energy shield, or supporting your allies by amplifying their damage, every hero's abilities are designed to be effective as part of a team. Learning to utilize your Abilities in concert with your teammates' is the key to victory.
+					p
+						b Team Based Objectives:
+						|  Teams of heroes do battle across the planet. From protecting the secrets of the mysterious Temple of Anubis, to safely escorting an EMP device through King's Row, the world is your battlefield
+				button.accordion Overwatch Maps and Game Modes
+				#maps.panel
+					p
+						| In Overwatch there are 5 different types of maps. The map types are Assault, Escort, Hybrid, Control, and Arena.
+					// Assault
+					p
+						b Assault:
+						|  Assault, sometimes referred to as Two Point Capture, is a Game Mode in which the attacking and defending teams must attempt to take or defend capture points across the map. Defenders always have the same spawnpoint, whether defending the first or second point, while the attacker's spawn changes depending on the point they are attempting to capture. It should be noted that every Assault map has an almost-immediate choke point, and that the defenders' spawn is just behind the second point, making the second push just as difficult as breaking the choke.
+					p The following maps are the available Assault maps: 
+					ul
+						li
+							a(href='http://overwatch.gamepedia.com/Hanamura')
+								img(src='images/games/OW/Maps/hanamura.png')
+								| Hanamura
+						li
+							a(href='http://overwatch.gamepedia.com/Temple_of_Anubis')
+								img(src='images/games/OW/Maps/TempleofAnubis.png')
+								| Temple of Anubis
+						li
+							a(href='http://overwatch.gamepedia.com/Volskaya_Industries')
+								img(src='images/games/OW/Maps/VolskayaIndustries.png')
+								| Volskaya Industries
+					// Escort
+					p
+						b Escort:
+						|  In Escort, there is an attacking and a defending team. Teams' roles are determined randomly when the map is         chosen, and once the match is complete, roles are swapped.
+						|                     The attacking team aims to escort a payload across the map to the objective, while the defending team aims to stop them.
+						|                     At the start of each round, the defending team is allocated some time to set up defenses before the attacking team is allowed out of their spawn area. When the set up timer runs out, attackers may leave their spawn area and another timer begins counting down. Each checkpoint reached adds extra time to the timer.
+						|                     If an attacker is within range of the payload when the timer expires, or shortly beforehand, Overtime will be activated. If the attacking team manages to get to an intermediate checkpoint during Overtime, the extra time is added and Overtime ends, with the game proceeding as normal.
+					p The following maps are the available Escort maps: 
+					ul
+						li
+							a(href='http://overwatch.gamepedia.com/Dorado')
+								img(src='images/games/OW/Maps/Dorado.png')
+								| Dorado
+						li
+							a(href='http://overwatch.gamepedia.com/Watchpoint:_Gibraltar')
+								img(src='images/games/OW/Maps/WatchpointGibraltar.png')
+								| Watchpoint: Gibraltar
+						li
+							a(href='http://overwatch.gamepedia.com/Route_66')
+								img(src='images/games/OW/Maps/Route66.png')
+								| Route 66
+					// Hybrid
+					p
+						b Hybird:
+						|  All currently available Hybrid maps start with Assault and result in a Escort situation, should the attacking team manage to take the point.
+					p The following maps are the available Hybrid maps: 
+					ul
+						li
+							a(href='http://overwatch.gamepedia.com/King%27s_Row')
+								img(src="images/games/OW/Maps/King'sRow.png")
+								| Kings Row
+						li
+							a(href='http://overwatch.gamepedia.com/Numbani')
+								img(src='images/games/OW/Maps/Numbani.png')
+								| Numbani
+						li
+							a(href='http://overwatch.gamepedia.com/Hollywood')
+								img(src='images/games/OW/Maps/Hollywood.png')
+								| Hollywood
+						li
+							a(href='http://overwatch.gamepedia.com/Eichenwalde')
+								img(src='images/games/OW/Maps/Eichenwalde.png')
+								| Eichenwalde
+					// Control
+					p
+						b Control:
+						|  On Control, two teams fight over a series of objective areas in a best-of-three format. This means that there is no distinction to attacking or defending teams like in other game modes.[1]
+						|                     Once the match has started and both teams have left the spawn, the control point takes 30 seconds to unlock. Once it unlocks, the objective area can be captured by either team. To capture the checkpoint, members of only one team must stand on the point for a given time, speed increasing with the number of teammates present. Once captured, the team must defend the point, while the other must gain control of the area by driving the enemies out and capturing it themselves. The objective score will slowly progress in favor of the team controlling point. The round is won once one team reaches 100%. The first team to win two rounds wins the match.
+						|                     Each of the Control maps has three objective areas, randomly chosen for every round.
+						|                     In Competitive Play, the match is played in a format of best of five rather than best of three. The map sectors are randomized for the first three rounds and are then reshuffled if the match reaches further. That means that in any competitive Control match, each map section is guaranteed to be played on at least once.
+					p The following maps are the available Control maps: 
+					ul
+						li
+							a(href='http://overwatch.gamepedia.com/Nepal')
+								img(src='images/games/OW/Maps/Nepal.png')
+								| Nepal
+						li
+							a(href='http://overwatch.gamepedia.com/Lijiang_Tower')
+								img(src='images/games/OW/Maps/LijiangTower.png')
+								| Lijiang Tower
+						li
+							a(href='http://overwatch.gamepedia.com/Ilios')
+								img(src='images/games/OW/Maps/Ilios.png')
+								| Illios
+					// Arena
+					p
+						b Arena:
+						|  Arena game modes have a few options. The options are 1v1 Mystery Duel, where you and a single opponent are randomed the same hero for each round in a best-of-nine battle; 3v3 Elimination, where you play with two other team-mates, any single-hero-limit team composition, but locked in for the rest of the round in a best-of-five – each round is no respawn
+					p The following map is the only currently available Arena map: 
+					ul
+						li
+							a(href='http://overwatch.gamepedia.com/Ecopoint:_Antarctica')
+								img(src='images/games/OW/Maps/EcopointAntarctica.png')
+								| Ecopoint: Antarctica
+				button#chars.accordion Overwatch Heroes
+				#heroes.panel
+					table.characters
+						tr
+							th Offense
+							td
+								a(href='http://overwatch.gamepedia.com/Genji')
+									img(src='images/games/OW/Heroes/genji.png')
+									p Genji
+							td
+								a(href='http://overwatch.gamepedia.com/McCree')
+									img(src='images/games/OW/Heroes/mccree.png')
+									p McCree
+							td
+								a(href='http://overwatch.gamepedia.com/Pharah')
+									img(src='images/games/OW/Heroes/pharah.png')
+									p Pharah
+							td
+								a(href='http://overwatch.gamepedia.com/Reaper')
+									img(src='images/games/OW/Heroes/reaper.png')
+									p Reaper
+							td
+								a(href='http://overwatch.gamepedia.com/Soldier:_76')
+									img(src='images/games/OW/Heroes/soldier76.png')
+									p Soldier: 76
+							td
+								a(href='http://overwatch.gamepedia.com/Sombra')
+									img(src='images/games/OW/Heroes/sombra.png')
+									p Sombra
+							td
+								a(href='http://overwatch.gamepedia.com/Tracer')
+									img(src='images/games/OW/Heroes/tracer.png')
+									p Tracer
+						tr
+							th Defense
+							td
+								a(href='http://overwatch.gamepedia.com/Bastion')
+									img(src='images/games/OW/Heroes/bastion.png')
+									p Bastion
+							td
+								a(href='http://overwatch.gamepedia.com/Hanzo')
+									img(src='images/games/OW/Heroes/hanzo.png')
+									p Hanzo
+							td
+								a(href='http://overwatch.gamepedia.com/Junkrat')
+									img(src='images/games/OW/Heroes/junkrat.png')
+									p Junkrat
+							td
+								a(href='http://overwatch.gamepedia.com/Mei')
+									img(src='images/games/OW/Heroes/mei.png')
+									p Mei
+							td
+								a(href='http://overwatch.gamepedia.com/Torbj%C3%B6rn')
+									img(src='images/games/OW/Heroes/torbjorn.png')
+									p Torbjörn
+							td
+								a(href='http://overwatch.gamepedia.com/Widowmaker')
+									img(src='images/games/OW/Heroes/widowmaker.png')
+									p Widowmaker
+						tr
+							th Tanks
+							td
+								a(href='http://overwatch.gamepedia.com/D.Va')
+									img(src='images/games/OW/Heroes/dva.png')
+									p D.Va
+							td
+								a(href='http://overwatch.gamepedia.com/Reinhardt')
+									img(src='images/games/OW/Heroes/reinhardt.png')
+									p Reinhardt
+							td
+								a(href='http://overwatch.gamepedia.com/Roadhog')
+									img(src='images/games/OW/Heroes/roadhog.png')
+									p Roadhog
+							td
+								a(href='http://overwatch.gamepedia.com/Winston')
+									img(src='images/games/OW/Heroes/winston.png')
+									p Winston
+							td
+								a(href='http://overwatch.gamepedia.com/Zarya')
+									img(src='images/games/OW/Heroes/zarya.png')
+									p Zarya
+						tr
+							th Support
+							td
+								a(href='http://overwatch.gamepedia.com/Ana')
+									img(src='images/games/OW/Heroes/ana.png')
+									p Ana
+							td
+								a(href='http://overwatch.gamepedia.com/L%C3%BAcio')
+									img(src='images/games/OW/Heroes/lucio.png')
+									p Lúcio
+							td
+								a(href='http://overwatch.gamepedia.com/Mercy/')
+									img(src='images/games/OW/Heroes/mercy.png')
+									p Mercy
+							td
+								a(href='http://overwatch.gamepedia.com/Symmetra')
+									img(src='images/games/OW/Heroes/symmetra.png')
+									p Symmetra
+							td
+								a(href='http://overwatch.gamepedia.com/Zenyatta')
+									img(src='images/games/OW/Heroes/zenyatta.png')
+									p Zenyatta
+				button#twitch-btn.accordion Recommended Twitch Streamer
+				#twitch.panel.OW
+			#footer
+				.wrapper
+					div
+						a#copy-right.button.btn-primary(href='#', onclick="document.getElementById('copyright').style.display='block'") Copyright Information
+						a
+						a.button.btn-primary(href='contact.html') Contact Us
+		script(src='http://player.twitch.tv/js/embed/v1.js')
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+		script(src='javascript/index.js')
+		script(src='javascript/games.js')

@@ -1,0 +1,117 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		title Web App Final
+		script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBWRawQzZpMr7n6JpcdGZ8LbT0kEcyzvO4&callback=initMap')
+		// Bootstrap
+		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+		link(type='text/css', rel='stylesheet', href='css/contact.css')
+		link(type='text/css', rel='stylesheet', href='css/index.css')
+	body
+		.wrapper
+			.header
+				img#banner(src='images/top-banner.png', alt='banner')
+			#modal.modal
+				form#form.modal-content.animate(action='/processLogin', method='post')
+					.imgcontainer
+						span.close(onclick="document.getElementById('modal').style.display='none'", title='Close Modal') ×
+						img.avatar(src='images/login_avatar.jpg', alt='Avatar')
+					.container
+						label
+							b Username
+						input(type='text', placeholder='Enter Username', name='uname', required='')
+						label
+							b Password
+						input(type='password', placeholder='Enter Password', name='psw', required='')
+						p !{error}
+						button.btn.btn-success(type='submit') Login
+					.container(style='background-color:#f1f1f1')
+						button.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='none'") Cancel
+						span.psw
+							a(href='/registrationPage') New User?
+			#copyright.modal
+				.modal-content.animate
+					#copyright-text.container
+						p All copyrights belong to their respective owners.
+						p
+							| Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.
+						p
+							| These images and text are used here only for the education of UOIT students, and are not intended to generate income.
+			#logout.modal
+				form#form.modal-content.animate(action='/processLogout', method='post')
+					#logout-text.container
+						p Are you sure you want to logout?
+						button.btn.btn-success(type='submit') Confirm
+						button.btn.btn-danger(type='button', onclick="document.getElementById('logout').style.display='none'") Cancel
+			nav.navbar.navbar-custom
+				.container-fluid
+					.navbar-header
+						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand(href='/') UOIT eSports
+					#navbar.navbar-collapse.collapse
+						ul.nav.navbar-nav
+							li
+								a(href='/aboutPage') About Us
+							li
+								a(href='/eventsPage') Events
+							li.dropdown
+								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+									| Games
+									span.caret
+								ul.dropdown-menu
+									li
+										a(href='/lolPage') League of Legends
+									li.divider(role='separator')
+									li
+										a(href='/dota2Page') Dota 2
+									li.divider(role='separator')
+									li
+										a(href='/owPage') Overwatch
+									li.divider(role='separator')
+									li
+										a(href='/scPage') Starcraft 2
+						ul.nav.navbar-nav.navbar-right
+							li
+								button#login.btn.btn-danger(type='button', onclick='handleLogin()') !{message}
+						ul.nav.navbar-nav.navbar-right
+							li
+								a#accountMessage(href='#') !{username}
+		.carousel-container
+			table
+				tr
+					td
+						#map
+					td(class='description')
+						p
+							| Being associated with the UOIT eSports Planner, we are run and
+							| operated by the UOIT eSports Club. We are located at the northern campus in
+							| Oshawa. Come over and join us for a fun and competitive environment.
+						p Stay up to date on all our activites on our social media pages!
+							#social-media
+								li
+									a(href='https://twitter.com/udesports')
+										img(src='images/Twitter-Logo.png', alt='UOIT eSports Twitter')
+								li
+									a(href='https://www.facebook.com/groups/ud.esports/')
+										img(src='images/Facebook-Logo.png', alt='UOIT eSports Facebook')
+								li
+									a(href='http://steamcommunity.com/groups/UD-eSports')
+										img(src='images/Steam-Logo.jpg', alt='UOIT eSports Steam Group')
+			#footer
+				.wrapper
+					div
+						a#copy-right.button.btn-primary(href='#', onclick="document.getElementById('copyright').style.display='block'") Copyright Information
+						a
+						a.button.btn-primary(href='/contactPage') Contact Us
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+		script(type='text/javascript', src='http://code.jquery.com/jquery-latest.min.js')
+		script(type='text/javascript', src='javascript/index.js')
+		script(type='text/javascript', src='javascript/contact.js')

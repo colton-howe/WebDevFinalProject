@@ -1,0 +1,745 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		title Web App Final
+		// Bootstrap
+		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+		link(type='text/css', rel='stylesheet', href='css/index.css')
+		link(type='text/css', rel='stylesheet', href='css/games.css')
+	body
+		.wrapper
+			.header
+				img#banner(src='images/top-banner.png', alt='banner')
+			#modal.modal
+				form#form.modal-content.animate(action='/processLogin', method='post')
+					.imgcontainer
+						span.close(onclick="document.getElementById('modal').style.display='none'", title='Close Modal') ×
+						img.avatar(src='images/login_avatar.jpg', alt='Avatar')
+					.container
+						label
+							b Username
+						input(type='text', placeholder='Enter Username', name='uname', required='')
+						label
+							b Password
+						input(type='password', placeholder='Enter Password', name='psw', required='')
+						p !{error}
+						button.btn.btn-success(type='submit') Login
+					.container(style='background-color:#f1f1f1')
+						button.btn.btn-danger(type='button', onclick="document.getElementById('modal').style.display='none'") Cancel
+						span.psw
+							a(href='/registrationPage') New User?
+			#copyright.modal
+				.modal-content.animate
+					#copyright-text.container
+						p All copyrights belong to their respective owners.
+						p
+							| Images and text owned by other copyright holders are used here under the guidelines of the Fair Dealing provisions of Copyright Act of Canada.
+						p
+							| These images and text are used here only for the education of UOIT students, and are not intended to generate income.
+			#logout.modal
+				form#form.modal-content.animate(action='/processLogout', method='post')
+					#logout-text.container
+						p Are you sure you want to logout?
+						button.btn.btn-success(type='submit') Confirm
+						button.btn.btn-danger(type='button', onclick="document.getElementById('logout').style.display='none'") Cancel
+			nav.navbar.navbar-custom
+				.container-fluid
+					.navbar-header
+						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand(href='/') UOIT eSports
+					#navbar.navbar-collapse.collapse
+						ul.nav.navbar-nav
+							li
+								a(href='/aboutPage') About Us
+							li
+								a(href='/eventsPage') Events
+							li.dropdown
+								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+									| Games
+									span.caret
+								ul.dropdown-menu
+									li
+										a(href='/lolPage') League of Legends
+									li.divider(role='separator')
+									li
+										a(href='/dota2Page') Dota 2
+									li.divider(role='separator')
+									li
+										a(href='/owPage') Overwatch
+									li.divider(role='separator')
+									li
+										a(href='/scPage') Starcraft 2
+						ul.nav.navbar-nav.navbar-right
+							li
+								button#login.btn.btn-danger(type='button', onclick='handleLogin()') !{message}
+						ul.nav.navbar-nav.navbar-right
+							li
+								a#accountMessage(href='#') !{username}
+			.container
+				.game-banner
+					img(src='images/game-banner/LoL.jpg')
+				button.accordion League of Legends General Info.
+				#summary.panel
+					p
+						| As the League of Legends was established to prevent further Rune Wars on Valoran, the neutral aligned summoners called forth exceptional individuals, referred to as 'champions', to battle on the Fields of Justice in order to settle disputes. These champions have joined the League for various reasons. Some are soldiers who have pledged their allegiance to a particular nation and fight in their nation's interests. Some are renowned warriors who seek to prove themselves against Valoran's most powerful beings. Some are prisoners of the League, forced to do the League's bidding as punishment. Some may even be strange creatures from other worlds, hoping to bring stability or further discord to Runeterra. For whatever the champion's reason, they have gained the interest of the League of Legends.
+					p
+						| In order to join the League, a potential champion, who has proven to possess extraordinary qualities, must travel to the Institute of War to undergo a Judgement. There, a designated summoner will probe their mind in order to determine the individual's motives. In truth, the intentions of the potential champion has little bearing on whether they are accepted into the League or not. The primary purpose of the Judgement is to determine whether the individual is capable of exposing their mind to the summoner, which would allow the two to share their mental thoughts and act as one. Should the potential champion pass their Judgement, as well as agreeing to the call of the summon, they will have become an official League champion.
+				button.accordion League of Legends Maps and Game Modes
+				#maps.panel
+					p
+						| League of Legends consists of three main maps. There are also two main game modes.
+					p
+						b ARAM:
+						|  ARAM, the acronym for All Random All Mid, is a supported PvP game mode in League of Legends. It was released on 06-29-2012. Upon entering champion selection, ten summoners, five on each team, randomly summon a champion from their available pool of champions (owned and free play). They are allowed to "reroll" their champion, based upon reroll points (a maximum of 2 rerolls can be saved up at once), which are gained by both playing ARAM games and having a diverse champion pool. Players may also try to trade with teammates if both players have both champions available to them, whether through purchase or the current weekly champion rotation.
+					p Out of the three maps is used for ARAM: 
+					ul#LoLimg
+						li
+							a(href='http://leagueoflegends.wikia.com/wiki/Murder_Bridge/Howling_Abyss')
+								img(src='images/games/LoL/Maps/Howling_Abyss.jpg')
+								br
+								| Howling Abyss
+					p
+						b Classic:
+						|  Players are formed into two even teams primarily comprised of three or five members. Each team starts at opposing sides of a map, near what is called a "Nexus." To win a match, a team must destroy the opposing team's Nexus. To do so, each team must work through a series of towers called 'turrets' that are placed along three paths to each base (commonly referred to as 'lanes') Along the way, each player gains power by completing game objectives, earning them experience points and gold that are used to increase the player's level and to purchase powerful items, potentially giving players an advantage over their opponents. Examples of these objectives include killing the opposing team's turrets, players, and 'minions' (small NPCs that constantly spawn and attack the other team).
+					p Two of the three maps are used for Classic: 
+					ul#LoLimg
+						li
+							a(href='http://leagueoflegends.wikia.com/wiki/Summoner%27s_Rift')
+								img(src='images/games/LoL/Maps/Summoners_Rift.jpg')
+								br
+								| Summoner's Rift (5v5 - Three lanes)
+						li
+							a(href='http://leagueoflegends.wikia.com/wiki/Twisted_Treeline')
+								img(src='images/games/LoL/Maps/Twisted_Treeline.png')
+								br
+								| Twisted Treeline (3v3 - Two Lanes)
+				button#chars.accordion League of Legends Champions
+				#heroes.panel
+					table.characters
+						tr
+							th Fighter
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Aatrox')
+									img(src='images/games/LoL/Champions/Fighter/AatroxSquare.png.webp')
+									p Aatrox
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Darius')
+									img(src='images/games/LoL/Champions/Fighter/DariusSquare.png.webp')
+									p Darius
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Diana')
+									img(src='images/games/LoL/Champions/Fighter/DianaSquare.png.webp')
+									p Diana
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Dr._Mundo')
+									img(src='images/games/LoL/Champions/Fighter/Dr._MundoSquare.png.webp')
+									p Dr. Mundo
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Fiora')
+									img(src='images/games/LoL/Champions/Fighter/FioraSquare.png.webp')
+									p Fiora
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Gangplank')
+									img(src='images/games/LoL/Champions/Fighter/GangplankSquare.png.webp')
+									p Gangplank
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Garen')
+									img(src='images/games/LoL/Champions/Fighter/GarenSquare.png.webp')
+									p Garen
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Gnar')
+									img(src='images/games/LoL/Champions/Fighter/GnarSquare.png.webp')
+									p Gnar
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Gragas')
+									img(src='images/games/LoL/Champions/Fighter/GragasSquare.png.webp')
+									p Gragas
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Hecarim')
+									img(src='images/games/LoL/Champions/Fighter/HecarimSquare.png.webp')
+									p Hecarim
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Illaoi')
+									img(src='images/games/LoL/Champions/Fighter/IllaoiSquare.png.webp')
+									p Illaoi
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Irelia')
+									img(src='images/games/LoL/Champions/Fighter/IreliaSquare.png.webp')
+									p Irelia
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Jax')
+									img(src='images/games/LoL/Champions/Fighter/JaxSquare.png.webp')
+									p Jax
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Jayce')
+									img(src='images/games/LoL/Champions/Fighter/JayceSquare.png.webp')
+									p Jayce
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Kayle')
+									img(src='images/games/LoL/Champions/Fighter/KayleSquare.png.webp')
+									p Kayle
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Kled')
+									img(src='images/games/LoL/Champions/Fighter/KledSquare.png.webp')
+									p Kled
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Lee_Sin')
+									img(src='images/games/LoL/Champions/Fighter/LeeSinSquare.png.webp')
+									p Lee Sin
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Mordekaisert')
+									img(src='images/games/LoL/Champions/Fighter/MordekaiserSquare.png.webp')
+									p Mordekaiser
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Nasus')
+									img(src='images/games/LoL/Champions/Fighter/NasusSquare.png.webp')
+									p Nasus
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Olaf')
+									img(src='images/games/LoL/Champions/Fighter/OlafSquare.png.webp')
+									p Olaf
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Pantheon')
+									img(src='images/games/LoL/Champions/Fighter/PantheonSquare.png.webp')
+									p Pantheon
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Rek%27Sai')
+									img(src="images/games/LoL/Champions/Fighter/Rek'SaiSquare.png.webp")
+									p Rek'Sai
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Renekton')
+									img(src='images/games/LoL/Champions/Fighter/RenektonSquare.png.webp')
+									p Renekton
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Riven')
+									img(src='images/games/LoL/Champions/Fighter/RivenSquare.png.webp')
+									p Riven
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Rumble')
+									img(src='images/games/LoL/Champions/Fighter/RumbleSquare.png.webp')
+									p Rumble
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Shyvana')
+									img(src='images/games/LoL/Champions/Fighter/ShyvanaSquare.png.webp')
+									p Shyvana
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Skarner')
+									img(src='images/games/LoL/Champions/Fighter/SkarnerSquare.png.webp')
+									p Skarner
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Trundle')
+									img(src='images/games/LoL/Champions/Fighter/TrundleSquare.png.webp')
+									p Trundle
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Udyr')
+									img(src='images/games/LoL/Champions/Fighter/UdyrSquare.png.webp')
+									p Udyr
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Vi')
+									img(src='images/games/LoL/Champions/Fighter/ViSquare.png.webp')
+									p Vi
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Volibear')
+									img(src='images/games/LoL/Champions/Fighter/VolibearSquare.png.webp')
+									p Volibear
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Warwick')
+									img(src='images/games/LoL/Champions/Fighter/WarwickSquare.png.webp')
+									p Warwick
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Wukong')
+									img(src='images/games/LoL/Champions/Fighter/WukongSquare.png.webp')
+									p Wukong
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Xin_Zhao')
+									img(src='images/games/LoL/Champions/Fighter/Xin_ZhaoSquare.png.webp')
+									p Xin Zhao
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Yasuo')
+									img(src='images/games/LoL/Champions/Fighter/YasuoSquare.png.webp')
+									p Yasuo
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Yorick')
+									img(src='images/games/LoL/Champions/Fighter/YorickSquare.png.webp')
+									p Yorick
+						tr
+							td
+								br
+						tr
+							th Mage
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Ahri')
+									img(src='images/games/LoL/Champions/Mage/AhriSquare.png.webp')
+									p Ahri
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Anivia')
+									img(src='images/games/LoL/Champions/Mage/AniviaSquare.png.webp')
+									p Anivia
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Annie')
+									img(src='images/games/LoL/Champions/Mage/AnnieSquare.png.webp')
+									p Annie
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Aurelion_Sol')
+									img(src='images/games/LoL/Champions/Mage/Aurelion_SolSquare.png.webp')
+									p Aurelion Sol
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Azir')
+									img(src='images/games/LoL/Champions/Mage/AzirSquare.png.webp')
+									p Azir
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Brand')
+									img(src='images/games/LoL/Champions/Mage/BrandSquare.png.webp')
+									p Brand
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Cassiopeia')
+									img(src='images/games/LoL/Champions/Mage/CassiopeiaSquare.png.webp')
+									p Cassiopeia
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Elise')
+									img(src='images/games/LoL/Champions/Mage/EliseSquare.png.webp')
+									p Elise
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Fiddlesticks')
+									img(src='images/games/LoL/Champions/Mage/FiddlesticksSquare.png.webp')
+									p Fiddlesticks
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Heimerdinger')
+									img(src='images/games/LoL/Champions/Mage/HeimerdingerSquare.png.webp')
+									p Heimerdinger
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Karma')
+									img(src='images/games/LoL/Champions/Mage/KarmaSquare.png.webp')
+									p Karma
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Karthus')
+									img(src='images/games/LoL/Champions/Mage/KarthusSquare.png.webp')
+									p Karthus
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Kennen')
+									img(src='images/games/LoL/Champions/Mage/KennenSquare.png.webp')
+									p Kennen
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Lissandra')
+									img(src='images/games/LoL/Champions/Mage/LissandraSquare.png.webp')
+									p Lissandra
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Lux')
+									img(src='images/games/LoL/Champions/Mage/LuxSquare.png.webp')
+									p Lux
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Malzahar')
+									img(src='images/games/LoL/Champions/Mage/MalzaharSquare.png.webp')
+									p Malzahar
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Morgana')
+									img(src='images/games/LoL/Champions/Mage/MorganaSquare.png.webp')
+									p Morgana
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Orianna')
+									img(src='images/games/LoL/Champions/Mage/OriannaSquare.png.webp')
+									p Orianna
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Ryze')
+									img(src='images/games/LoL/Champions/Mage/RyzeSquare.png.webp')
+									p Ryze
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Swain')
+									img(src='images/games/LoL/Champions/Mage/SwainSquare.png.webp')
+									p Swain
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Syndra')
+									img(src='images/games/LoL/Champions/Mage/SyndraSquare.png.webp')
+									p Syndra
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Taliyah')
+									img(src='images/games/LoL/Champions/Mage/TaliyahSquare.png.webp')
+									p Taliyah
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Twisted_Fate')
+									img(src='images/games/LoL/Champions/Mage/Twisted_FateSquare.png.webp')
+									p Twisted Fate
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Veigar')
+									img(src='images/games/LoL/Champions/Mage/VeigarSquare.png.webp')
+									p Veigar
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Vel%27koz')
+									img(src="images/games/LoL/Champions/Mage/Vel'KozSquare.png.webp")
+									p Vel'Koz
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Viktor')
+									img(src='images/games/LoL/Champions/Mage/ViktorSquare.png.webp')
+									p Viktor
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Vladimir')
+									img(src='images/games/LoL/Champions/Mage/VladimirSquare.png.webp')
+									p Vladimir
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Xerath')
+									img(src='images/games/LoL/Champions/Mage/XerathSquare.png.webp')
+									p Xerath
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Ziggs')
+									img(src='images/games/LoL/Champions/Mage/ZiggsSquare.png.webp')
+									p Ziggs
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Zyra')
+									img(src='images/games/LoL/Champions/Mage/ZyraSquare.png.webp')
+									p Zyra
+						tr
+							td
+								br
+						tr
+							th Controller
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Bard')
+									img(src='images/games/LoL/Champions/Controller/BardSquare.png.webp')
+									p Bard
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Braum')
+									img(src='images/games/LoL/Champions/Controller/BraumSquare.png.webp')
+									p Braum
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Ivern')
+									img(src='images/games/LoL/Champions/Controller/IvernSquare.png.webp')
+									p Ivern
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Janna')
+									img(src='images/games/LoL/Champions/Controller/JannaSquare.png.webp')
+									p Janna
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Lulu')
+									img(src='images/games/LoL/Champions/Controller/LuluSquare.png.webp')
+									p Lulu
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Nami')
+									img(src='images/games/LoL/Champions/Controller/NamiSquare.png.webp')
+									p Nami
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Nunu')
+									img(src='images/games/LoL/Champions/Controller/NunuSquare.png.webp')
+									p Nunu
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Sona')
+									img(src='images/games/LoL/Champions/Controller/SonaSquare.png.webp')
+									p Sona
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Soraka')
+									img(src='images/games/LoL/Champions/Controller/SorakaSquare.png.webp')
+									p Soraka
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Tahm_Kench')
+									img(src='images/games/LoL/Champions/Controller/Tahm_KenchSquare.png.webp')
+									p Tahm Kench
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Taric')
+									img(src='images/games/LoL/Champions/Controller/TaricSquare.png.webp')
+									p Taric
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Thresh')
+									img(src='images/games/LoL/Champions/Controller/ThreshSquare.png.webp')
+									p Thresh
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Zilean')
+									img(src='images/games/LoL/Champions/Controller/ZileanSquare.png.webp')
+									p Zilean
+						tr
+							td
+								br
+						tr
+							th Tanks
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Alistar')
+									img(src='images/games/LoL/Champions/Tank/AlistarSquare.png.webp')
+									p Alistar
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Amumu')
+									img(src='images/games/LoL/Champions/Tank/AmumuSquare.png.webp')
+									p Amumu
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Blitzcrank')
+									img(src='images/games/LoL/Champions/Tank/BlitzcrankSquare.png.webp')
+									p Blitzcrank
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Cho%27Gath')
+									img(src="images/games/LoL/Champions/Tank/Cho'GathSquare.png.webp")
+									p Cho'Gath
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Galio')
+									img(src='images/games/LoL/Champions/Tank/GalioSquare.png.webp')
+									p Galio
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Jarvan_IV')
+									img(src='images/games/LoL/Champions/Tank/Jarvan_IVSquare.png.webp')
+									p Jarvan IV
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Leona')
+									img(src='images/games/LoL/Champions/Tank/LeonaSquare.png.webp')
+									p Leona
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Malphite')
+									img(src='images/games/LoL/Champions/Tank/MalphiteSquare.png.webp')
+									p Malphite
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Maokai')
+									img(src='images/games/LoL/Champions/Tank/MaokaiSquare.png.webp')
+									p Maokai
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Nautilus')
+									img(src='images/games/LoL/Champions/Tank/NautilusSquare.png.webp')
+									p Nautilus
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Poppy')
+									img(src='images/games/LoL/Champions/Tank/PoppySquare.png.webp')
+									p Poppy
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Rammus')
+									img(src='images/games/LoL/Champions/Tank/RammusSquare.png.webp')
+									p Rammus
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Sejuani')
+									img(src='images/games/LoL/Champions/Tank/SejuaniSquare.png.webp')
+									p Sejuani
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Shen')
+									img(src='images/games/LoL/Champions/Tank/ShenSquare.png.webp')
+									p Shen
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Singed')
+									img(src='images/games/LoL/Champions/Tank/SingedSquare.png.webp')
+									p Singed
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Sion')
+									img(src='images/games/LoL/Champions/Tank/SionSquare.png.webp')
+									p Sion
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Zac')
+									img(src='images/games/LoL/Champions/Tank/ZacSquare.png.webp')
+									p Zac
+						tr
+							td
+								br
+						tr
+							th Slayer
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Akali')
+									img(src='images/games/LoL/Champions/Slayer/AkaliSquare.png.webp')
+									p Akali
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Ekko')
+									img(src='images/games/LoL/Champions/Slayer/EkkoSquare.png.webp')
+									p Ekko
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Evelynn')
+									img(src='images/games/LoL/Champions/Slayer/EvelynnSquare.png.webp')
+									p Evelynn
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Fizz')
+									img(src='images/games/LoL/Champions/Slayer/FizzSquare.png.webp')
+									p Fizz
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Kassadin')
+									img(src='images/games/LoL/Champions/Slayer/KassadinSquare.png.webp')
+									p Kassadin
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Katarina')
+									img(src='images/games/LoL/Champions/Slayer/KatarinaSquare.png.webp')
+									p Katarina
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Kha%27Zix')
+									img(src="images/games/LoL/Champions/Slayer/Kha'ZixSquare.png.webp")
+									p Kha'Zix
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/LeBlanc')
+									img(src='images/games/LoL/Champions/Slayer/LeBlancSquare.png.webp')
+									p LeBlanc
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Master_Yi')
+									img(src='images/games/LoL/Champions/Slayer/MasterYiSquare.png.webp')
+									p Master Yi
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Nidalee')
+									img(src='images/games/LoL/Champions/Slayer/NidaleeSquare.png.webp')
+									p Nidalee
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Nocturne')
+									img(src='images/games/LoL/Champions/Slayer/NocturneSquare.png.webp')
+									p Nocturne
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Rengar')
+									img(src='images/games/LoL/Champions/Slayer/RengarSquare.png.webp')
+									p Rengar
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Shaco')
+									img(src='images/games/LoL/Champions/Slayer/ShacoSquare.png.webp')
+									p Shaco
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Talon')
+									img(src='images/games/LoL/Champions/Slayer/TalonSquare.png.webp')
+									p Talon
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Tryndamere')
+									img(src='images/games/LoL/Champions/Slayer/TryndamereSquare.png.webp')
+									p Tryndamere
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Zed')
+									img(src='images/games/LoL/Champions/Slayer/ZedSquare.png.webp')
+									p Zed
+						tr
+							td
+								br
+						tr
+							th Marksman
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Ashe')
+									img(src='images/games/LoL/Champions/Marksman/AsheSquare.png.webp')
+									p Ashe
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Caitlyn')
+									img(src='images/games/LoL/Champions/Marksman/CaitlynSquare.png.webp')
+									p Caitlyn
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Corki')
+									img(src='images/games/LoL/Champions/Marksman/CorkiSquare.png.webp')
+									p Corki
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Draven')
+									img(src='images/games/LoL/Champions/Marksman/DravenSquare.png.webp')
+									p Draven
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Ezreal')
+									img(src='images/games/LoL/Champions/Marksman/EzrealSquare.png.webp')
+									p Ezreal
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Graves')
+									img(src='images/games/LoL/Champions/Marksman/GravesSquare.png.webp')
+									p Graves
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Jhin')
+									img(src='images/games/LoL/Champions/Marksman/JhinSquare.png.webp')
+									p Jhin
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Jinx')
+									img(src='images/games/LoL/Champions/Marksman/JinxSquare.png.webp')
+									p Jinx
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Kalista')
+									img(src='images/games/LoL/Champions/Marksman/KalistaSquare.png.webp')
+									p Kalista
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Kindred')
+									img(src='images/games/LoL/Champions/Marksman/KindredSquare.png.webp')
+									p Kindred
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Kog%27Maw')
+									img(src="images/games/LoL/Champions/Marksman/Kog'MawSquare.png.webp")
+									p Kog'Maw
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Lucian')
+									img(src='images/games/LoL/Champions/Marksman/LucianSquare.png.webp')
+									p Lucian
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Miss_Fortune')
+									img(src='images/games/LoL/Champions/Marksman/MissFortuneSquare.png.webp')
+									p Miss Fortune
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Quinn')
+									img(src='images/games/LoL/Champions/Marksman/QuinnSquare.png.webp')
+									p Quinn
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Sivir')
+									img(src='images/games/LoL/Champions/Marksman/SivirSquare.png.webp')
+									p Sivir
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Teemo')
+									img(src='images/games/LoL/Champions/Marksman/TeemoSquare.png.webp')
+									p Teemo
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Tristana')
+									img(src='images/games/LoL/Champions/Marksman/TristanaSquare.png.webp')
+									p Tristana
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Twitch')
+									img(src='images/games/LoL/Champions/Marksman/TwitchSquare.png.webp')
+									p Twitch
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Urgot')
+									img(src='images/games/LoL/Champions/Marksman/UrgotSquare.png.webp')
+									p Urgot
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Varus')
+									img(src='images/games/LoL/Champions/Marksman/VarusSquare.png.webp')
+									p Varus
+						tr
+							th
+							td
+								a(href='http://leagueoflegends.wikia.com/wiki/Vayne')
+									img(src='images/games/LoL/Champions/Marksman/VayneSquare.png.webp')
+									p Vayne
+				button#twitch-btn.accordion Recommended Twitch Streamer
+				#twitch.panel.LoL
+			#footer
+				.wrapper
+					div
+						a#copy-right.button.btn-primary(href='#', onclick="document.getElementById('copyright').style.display='block'") Copyright Information
+						a
+						a.button.btn-primary(href='contact.html') Contact Us
+		script(src='http://player.twitch.tv/js/embed/v1.js')
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+		script(src='javascript/index.js')
+		script(src='javascript/games.js')
